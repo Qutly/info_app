@@ -8,6 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/LogOutButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -15,7 +16,27 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:GeneralViewModel}">
+                <view:GeneralView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HealthViewModel}">
+                <view:HealthView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ScienceViewModel}">
+                <view:ScienceView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:TechnologyViewModel}">
+                <view:TechnologyView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EntertainmentViewModel}">
+                <view:EntertainmentView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
