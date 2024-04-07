@@ -1,16 +1,17 @@
-using System;
+using info_app.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
-using info_app.Models;
 
 namespace info_app
 {
-    public class NewsApp : DbContext
+    public class NewsAppContext : DbContext
     {
-        public NewsApp()
-            : base("name=NewsApp")
+        public NewsAppContext()
+            : base("name=NewsAppContext")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
@@ -22,9 +23,29 @@ namespace info_app
 
     }
 
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
+    public class UniversityDbInitializer : DropCreateDatabaseAlways<NewsAppContext>
+    {
+
+        protected override void Seed(NewsAppContext context)
+        {
+            var article = new Article(100, "https://www.example.com", "Sample Article Title", "Sample description", "2024-04-07", "Sample Author", "Sample Category", null);
+            var users = new List<User>
+            {
+                    new User(1,
+                        "Robotics",
+                        "123",
+                        new Collection<FavouriteArticle> {
+                        new FavouriteArticle() {
+                            UserId = 1,
+                            ArticleId= 100,
+                            Article = article
+                            }
+                        }) ,
+                };
+            users.ForEach(c => context.Users.Add(c));
+            context.SaveChanges();
+
+            List<User> courses_db = context.Users.ToList();
+        }
+    }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace info_app.Models
 {
@@ -15,6 +11,17 @@ namespace info_app.Models
         public string DateOfPublish { get; set; }
         public string Author { get; set; }
         public string Category { get; set; }
-        public ICollection<FavouriteArticle> FavouriteArticles { get; set; }
+        public virtual ICollection<FavouriteArticle> FavouriteArticles { get; set; }
+        public Article(int id, string url, string title, string description, string dateOfPublish, string author, string category, ICollection<FavouriteArticle> favouriteArticles)
+        {
+            Id = id;
+            Url = "x";
+            Title = "tytul";
+            Description = "description";
+            DateOfPublish = "dateOfPublish";
+            Author = "author";
+            Category = "category";
+            FavouriteArticles = favouriteArticles;
+        }
     }
 }
