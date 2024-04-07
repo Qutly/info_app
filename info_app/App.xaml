@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:info_app"
              xmlns:viewModel="clr-namespace:info_app.MVVM.ViewModel"
              xmlns:view="clr-namespace:info_app.MVVM.View"
+             xmlns:localAPI="clr-namespace:info_app.API"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -35,6 +36,10 @@
 
             <DataTemplate DataType="{x:Type viewModel:EntertainmentViewModel}">
                 <view:EntertainmentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:FavouriteViewModel}">
+                <view:FavouriteView/>
             </DataTemplate>
 
         </ResourceDictionary>

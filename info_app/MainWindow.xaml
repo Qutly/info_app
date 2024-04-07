@@ -40,13 +40,22 @@
                        Margin="20, 0, 0, 0"/>
 
             <StackPanel Grid.Row="1">
+                <RadioButton Content="Favourite"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding FavouriteViewCommand}"
+                             Margin="0,0,0,30"
+                             IsChecked="True"
+                             />
                 <RadioButton Content="Business"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"
-                             Command="{Binding HomeViewCommand}"/>
+                             Command="{Binding HomeViewCommand}"
+                             />
                 <RadioButton Content="Entertainment"
                              Height="50"
                              Foreground="White"

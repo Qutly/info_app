@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace info_app.MVVM.ViewModel
 {
-    class TechnologyViewModel
+    class FavouriteViewModel
     {
     }
 }

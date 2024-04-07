@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace info_app.MVVM.ViewModel
 {
-    internal class ScienceViewModel
+    class ScienceViewModel
     {
     }
 }

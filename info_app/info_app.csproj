@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="API\Article.cs" />
+    <Compile Include="API\ArticleResponse.cs" />
+    <Compile Include="API\NewsApiResponse.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -70,6 +76,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MVVM\View\EntertainmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\FavouriteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\ViewModel\EntertainmentViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\FavouriteViewModel.cs" />
     <Compile Include="MVVM\ViewModel\GeneralViewModel.cs" />
     <Compile Include="MVVM\ViewModel\HealthViewModel.cs" />
     <Compile Include="MVVM\ViewModel\HomeViewModel.cs" />
@@ -116,6 +127,9 @@
     <Compile Include="MVVM\ViewModel\TechnologyViewModel.cs" />
     <Compile Include="MVVM\View\EntertainmentView.xaml.cs">
       <DependentUpon>EntertainmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\FavouriteView.xaml.cs">
+      <DependentUpon>FavouriteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\GeneralView.xaml.cs">
       <DependentUpon>GeneralView.xaml</DependentUpon>
@@ -149,6 +163,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
