@@ -1,4 +1,5 @@
 using info_app.Models;
+using MySql.Data.EntityFramework;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 
 namespace info_app
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class NewsAppContext : DbContext
     {
         public NewsAppContext()
