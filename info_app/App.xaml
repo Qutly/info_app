@@ -4,10 +4,12 @@
              xmlns:local="clr-namespace:info_app"
              xmlns:viewModel="clr-namespace:info_app.MVVM.ViewModel"
              xmlns:view="clr-namespace:info_app.MVVM.View"
+             xmlns:localAPI="clr-namespace:info_app.API"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/LogOutButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -15,7 +17,31 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:GeneralViewModel}">
+                <view:GeneralView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HealthViewModel}">
+                <view:HealthView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ScienceViewModel}">
+                <view:ScienceView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:TechnologyViewModel}">
+                <view:TechnologyView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EntertainmentViewModel}">
+                <view:EntertainmentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:FavouriteViewModel}">
+                <view:FavouriteView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

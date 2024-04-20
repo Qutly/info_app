@@ -40,16 +40,66 @@
                        Margin="20, 0, 0, 0"/>
 
             <StackPanel Grid.Row="1">
-                <RadioButton Content="Home"
+                <RadioButton Content="Favourite"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding FavouriteViewCommand}"
+                             Margin="0,0,0,30"
+                             IsChecked="True"
+                             />
+                <RadioButton Content="Business"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HomeViewCommand}"
+                             />
+                <RadioButton Content="Entertainment"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding EntertainmentViewCommand}"
+                             />
+                <RadioButton Content="General"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding GeneralViewCommand}"
+                             />
+                <RadioButton Content="Health"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HealthViewCommand}"
+                             />
+                <RadioButton Content="Science"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ScienceViewCommand}"
+                             />
+                <RadioButton Content="Technology"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding TechnologyViewCommand}"
+                             />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
                 <RadioButton Content="Log Out"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                     Height="50"
+                     Foreground="White"
+                     FontSize="14"
+                     Style="{StaticResource LogOutButtonTheme}"
+                     Margin="0,0,0,20"/>
             </StackPanel>
 
             <TextBox Width="211"
