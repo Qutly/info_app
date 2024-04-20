@@ -16,7 +16,7 @@ namespace info_app.MVVM.ViewModel
             _client = new HttpClient();
         }
 
-        public List<Article> Articles { get; private set; }
+        public List<Article> Articles { get; set; }
 
         public async Task FetchDataAsync()
         {

@@ -23,11 +23,25 @@ namespace info_app
         public MainWindow()
         {
             InitializeComponent();
+            ApiHelper.InitializeClient();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        public static async Task LoadArticle(string category_name)
+        {
+            var article = await ArticleProcessor.GetArticle(category_name);
+
+
+            Console.WriteLine($"Title: {article.Title}");
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await LoadArticle("entertainment");
         }
     }
 }
