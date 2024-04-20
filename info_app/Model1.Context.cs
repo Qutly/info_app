@@ -9,6 +9,7 @@
 
 namespace info_app
 {
+    using info_app.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
