@@ -1,4 +1,5 @@
 ﻿using info_app.Core;
+using info_app;
 
 
 namespace info_app.MVVM.ViewModel
@@ -75,9 +76,9 @@ namespace info_app.MVVM.ViewModel
                 CurrentView = TechnologyVM;
             });
 
-            EntertainmentViewCommand = new RelayCommand(o =>
+            EntertainmentViewCommand = new RelayCommand(async o =>
             {
-                _ = _entertainmentViewModel.FetchDataAsync();
+                await MainWindow.LoadArticle("entertainment");
                 CurrentView = EntertainmentVM;
             });
 
