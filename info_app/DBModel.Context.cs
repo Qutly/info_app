@@ -9,15 +9,14 @@
 
 namespace info_app
 {
-    using info_app.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class newsappdatabaseEntities : DbContext
+    public partial class newsappdatabaseEntities2 : DbContext
     {
-        public newsappdatabaseEntities()
-            : base("name=newsappdatabaseEntities")
+        public newsappdatabaseEntities2()
+            : base("name=newsappdatabaseEntities2")
         {
         }
     

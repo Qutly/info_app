@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using info_app.API;
+using info_app;
 
 namespace info_app.MVVM.ViewModel
 {
@@ -39,17 +40,15 @@ namespace info_app.MVVM.ViewModel
                     var articleResponse = articlesResponse.Articles[i];
                     Articles.Add(new Article
                     {
-                        Title = articleResponse.Title,
-                        Url = articleResponse.Url,
-                        UrlToImage = articleResponse.UrlToImage
+                        topic = articleResponse.Title,
+                        url = articleResponse.Url,
                     });
                 }
 
                 foreach (var article in Articles)
                 {
-                    Console.WriteLine($"Title: {article.Title}");
-                    Console.WriteLine($"URL: {article.Url}");
-                    Console.WriteLine($"URL to Image: {article.UrlToImage}");
+                    Console.WriteLine($"Title: {article.topic}");
+                    Console.WriteLine($"URL: {article.url}");
                     Console.WriteLine();
                 }
             }

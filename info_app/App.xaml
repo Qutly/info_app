@@ -5,7 +5,7 @@
              xmlns:viewModel="clr-namespace:info_app.MVVM.ViewModel"
              xmlns:view="clr-namespace:info_app.MVVM.View"
              xmlns:localAPI="clr-namespace:info_app.API"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MVVM/View/UserLogin.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

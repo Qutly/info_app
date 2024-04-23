@@ -38,7 +38,7 @@
                                Foreground="White" 
                                FontSize="20"
                                HorizontalAlignment="Left" 
-                               Margin="0,0,0,10"/>
+                               Margin="0,0,0,10" Width="270"/>
                 </Border>
                 <Border Width="280"
                         Height="150"
