@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
 namespace info_app.API
 {
     public class Article
@@ -13,3 +14,4 @@ namespace info_app.API
         public string UrlToImage { get; set; }
     }
 }
+*/

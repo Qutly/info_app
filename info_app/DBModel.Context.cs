@@ -24,7 +24,8 @@ namespace info_app
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+
         public virtual DbSet<Article> Article { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
