@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using info_app.Models;
 using info_app.ViewModel;
 using info_app.Views;
 

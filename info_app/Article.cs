@@ -21,11 +21,11 @@ namespace info_app
         }
     
         public int ArticleId { get; set; }
-        public string url { get; set; }
-        public string category { get; set; }
-        public string author { get; set; }
         public string topic { get; set; }
+        public string category { get; set; }
         public string description { get; set; }
+        public string url { get; set; }
+        public string author { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User { get; set; }

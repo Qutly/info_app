@@ -6,9 +6,14 @@
              xmlns:local="clr-namespace:info_app.Views"
              xmlns:l="clr-namespace:info_app"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:viewModel="clr-namespace:info_app.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="HomeView_Loaded">
+    <UserControl.DataContext>
+        <viewModel:HomeViewModel/>
+    </UserControl.DataContext>
+
     <StackPanel>
         <TextBlock Text="Discover"
                Foreground="White"
@@ -36,7 +41,7 @@
                         CornerRadius="10"
                         Margin="15,0,0,0">
                     <StackPanel>
-                    <TextBlock Name="TextBlock1"
+                        <TextBlock Name="TextBlock1"
                                Text="{Binding TopArticles[0].topic}"
                                FontSize="15"
                                FontFamily="Arial"
@@ -44,19 +49,17 @@
                                HorizontalAlignment="Left" 
                                Margin="0,0,0,0" Width="240" Height="100"
                                TextWrapping="Wrap"
-                               TextAlignment="Center"/>
-                        <RadioButton Content="Dodaj do Ulubionych"
-                                     Margin="0,20,0,0"
-                                     TextBlock.TextAlignment="Left"
-                                     Height="30"
-                                     Foreground="White"
-                                     Background="Red"
-                                     FontSize="14"
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding AddToFavourites}"
-                                     CommandParameter="0"
-                                     IsEnabled="False"
-                             />
+                               TextAlignment="Center"
+                               Tag="0"/>
+                        <Button Content="Dodaj do Ulubionych"
+                                Margin="0,20,0,0"
+                                TextBlock.TextAlignment="Left"
+                                Height="30"
+                                Foreground="White"
+                                Background="Red"
+                                FontSize="14"
+                                Click="Button1_Click"
+                                Tag="0"/>
                     </StackPanel>
                 </Border>
                 <Border Width="240"

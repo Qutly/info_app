@@ -13,10 +13,10 @@ namespace info_app
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class newsappdatabaseEntities2 : DbContext
+    public partial class NewsAppDBEntities : DbContext
     {
-        public newsappdatabaseEntities2()
-            : base("name=newsappdatabaseEntities2")
+        public NewsAppDBEntities()
+            : base("name=NewsAppDBEntities")
         {
         }
     
@@ -24,8 +24,7 @@ namespace info_app
         {
             throw new UnintentionalCodeFirstException();
         }
-
-
+    
         public virtual DbSet<Article> Article { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

@@ -11,19 +11,19 @@ namespace info_app.Repository
 {
     public class UserRepository : IUserInterface
     {
-        public bool AuthenticateUser(NetworkCredential credential)
+        public int AuthenticateUser(NetworkCredential credential)
         {
-            bool valid = false;
-            newsappdatabaseEntities2 db = new newsappdatabaseEntities2();
+            int id = -1;
+            NewsAppDBEntities db = new NewsAppDBEntities();
             var record = db.User.FirstOrDefault(x => x.username == credential.UserName);
             if(record != null)
             {
                 if (record.password == credential.Password)
                 {
-                    valid= true;
+                    id = record.UserId;
                 }
             }
-            return valid;
+            return id;
         }
     }
 }

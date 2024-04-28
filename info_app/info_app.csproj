@@ -166,18 +166,28 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Article.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IUserInterface.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="NewsAppDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsAppDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewsAppDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewsAppDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseInnerModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
@@ -213,16 +223,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
     <Page Include="Style\StylePrzyciski.xaml">
       <SubType>Designer</SubType>
@@ -287,22 +287,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="NewsAppDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
+      <LastGenOutput>NewsAppDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="NewsAppDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
+      <LastGenOutput>NewsAppDBModel.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
-    </None>
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <EntityDeploy Include="NewsAppDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewsAppDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="NewsAppDBModel.edmx.diagram">
+      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -329,24 +339,7 @@
     <Resource Include="Images\nobglogo.png" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="DBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.cs</LastGenOutput>
-    </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="newsappdatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="newsappdatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>newsappdatabase.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

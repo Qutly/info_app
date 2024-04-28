@@ -96,8 +96,8 @@ namespace info_app.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            var valid = userInterface.AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
-            if(valid)
+            var userId = userInterface.AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
+            if(userId != -1)
             {
                 Isvisible = false;
             }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -36,18 +37,38 @@ namespace info_app.ViewModel
             TopArticles = new ObservableCollection<Article>();
         }
 
-        /*private void AddToFavourites(int? index)
+        public void WykonajAkcje(int index)
         {
-            if (index.HasValue)
+            Article selectedArticle = TopArticles[index];
+
+            try
             {
-                Article selectedArticle = TopArticles[index.Value];
-                using (newsappdatabaseEntities2 db = new newsappdatabaseEntities2())
+                using (NewsAppDBEntities db = new NewsAppDBEntities())
                 {
+                    Console.WriteLine(selectedArticle.ArticleId);
                     db.Article.Add(selectedArticle);
+                    db.SaveChanges();
                 }
             }
-            
-        }*/
+
+
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Console.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+        }
+
         internal async Task LoadDataFromApiAsync()
         {
             using (HttpClient client = new HttpClient())
@@ -72,6 +93,9 @@ namespace info_app.ViewModel
                         {
                             topic = articleResponse.Title,
                             url = articleResponse.Url,
+                            category = "Entertainment",
+                            author = articleResponse.Author,
+                            description = ""
                         });
                     }
                     TopArticles = new ObservableCollection<Article>(Articles);

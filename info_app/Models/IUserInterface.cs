@@ -9,6 +9,6 @@ namespace info_app.Models
 {
     public interface IUserInterface
     {
-        bool AuthenticateUser(NetworkCredential credential);
+        int AuthenticateUser(NetworkCredential credential);
     }
 }
