@@ -17,7 +17,7 @@ namespace info_app
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Article = new HashSet<Article>();
+            this.FavouriteAricles = new HashSet<FavouriteAricles>();
         }
     
         public int UserId { get; set; }
@@ -26,6 +26,6 @@ namespace info_app
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> Article { get; set; }
+        public virtual ICollection<FavouriteAricles> FavouriteAricles { get; set; }
     }
 }

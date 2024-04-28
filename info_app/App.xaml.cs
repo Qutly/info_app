@@ -27,9 +27,7 @@ namespace info_app
                 {
                     //var mainViewModel = new MainViewModel();
                     //await mainViewModel.LoadArticlesAsync();
-
                     var mainView = new MainWindow();
-                    //mainView.DataContext = mainViewModel;
                     mainView.Show();
                     loginView.Close();
                 }

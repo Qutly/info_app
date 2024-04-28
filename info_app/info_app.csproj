@@ -168,6 +168,9 @@
     <Compile Include="Article.cs">
       <DependentUpon>NewsAppDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FavouriteAricles.cs">
+      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IUserInterface.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="NewsAppDBModel.Context.cs">
@@ -191,6 +194,7 @@
     </Compile>
     <Compile Include="ViewModel\BaseInnerModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\EntertainmentViewModel.cs" />
     <Compile Include="ViewModel\FavouritesViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

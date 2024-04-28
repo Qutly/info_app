@@ -8,17 +8,13 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Media;
-
 
 namespace info_app.ViewModel
 {
-    public class HomeViewModel : BaseViewModel
+    public class EntertainmentViewModel: BaseViewModel
     {
         private ObservableCollection<Article> _TopArticles;
         public List<Article> Articles { get; set; }
-        //public DelegateCommand<int?> AddToFavouritesCommand { get; }
         public ObservableCollection<Article> TopArticles
         {
             get
@@ -31,9 +27,8 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(TopArticles));
             }
         }
-        public HomeViewModel()
+        public EntertainmentViewModel()
         {
-            //AddToFavouritesCommand = new DelegateCommand<int?>(AddToFavourites);
             TopArticles = new ObservableCollection<Article>();
         }
 
@@ -44,7 +39,7 @@ namespace info_app.ViewModel
             {
                 using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
                 {
-                    if(db.Article.Any(article => article.topic == selectedArticle.topic))
+                    if (db.Article.Any(article => article.topic == selectedArticle.topic))
                     {
 
                     }
@@ -60,12 +55,10 @@ namespace info_app.ViewModel
                         };
                         db.FavouriteAricles.Add(FavObj);
                         db.SaveChanges();
-                    } 
-                    
+                    }
+
                 }
             }
-
-
             catch (DbEntityValidationException ex)
             {
                 foreach (var validationErrors in ex.EntityValidationErrors)
@@ -116,7 +109,7 @@ namespace info_app.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());  
+                    Console.WriteLine(ex.ToString());
                 }
 
                 finally

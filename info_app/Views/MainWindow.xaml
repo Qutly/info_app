@@ -71,6 +71,7 @@
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ShowEntertainmentViewCommand}"
                              />
                 <RadioButton Content="General"
                              Height="50"

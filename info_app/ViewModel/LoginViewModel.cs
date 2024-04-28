@@ -16,11 +16,25 @@ namespace info_app.ViewModel
     public class LoginViewModel : BaseViewModel
     {
         private string _username;
+        private int _UserId;
         private string _password;
         private bool _isvisible = true;
         private string _errormsg;
 
         private IUserInterface userInterface;
+
+        public int UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                _UserId = value;
+                OnPropertyChanged(nameof(UserId)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+            }
+        }
 
         public string Username
         {
@@ -100,6 +114,7 @@ namespace info_app.ViewModel
             if(userId != -1)
             {
                 Isvisible = false;
+                UserId = userId;
             }
             else
             {

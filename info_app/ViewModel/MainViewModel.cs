@@ -1,4 +1,5 @@
-﻿using System;
+﻿using info_app.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,17 @@ namespace info_app.ViewModel
     public class MainViewModel: BaseViewModel
     {
         private BaseViewModel _currentChildView;
+        private int _UserId;
+        
+        public int UserId
+        {
+            get { return _UserId; }
+            set
+            {
+                _UserId = value;
+                OnPropertyChanged(nameof(UserId));
+            }
+        }
         public BaseViewModel CurrentChildViewModel
         {
             get
@@ -31,11 +43,13 @@ namespace info_app.ViewModel
         }
         public ICommand ShowHomeViewCommand { get; }
         public ICommand ShowFavouritesViewCommand { get; }
+        public ICommand ShowEntertainmentViewCommand { get; }
 
         public MainViewModel()
         {
             ShowHomeViewCommand = new RelayCommand(ExecuteShowHomeViewCommand);
             ShowFavouritesViewCommand = new RelayCommand(ExecuteShowFavouritesViewCommand);
+            ShowEntertainmentViewCommand = new RelayCommand(ExecuteShowEntertainmentViewCommand);
             ExecuteShowHomeViewCommand(null);
         }
 
@@ -50,6 +64,12 @@ namespace info_app.ViewModel
 
         }
 
+        private void ExecuteShowEntertainmentViewCommand(object obj)
+        {
+            CurrentChildViewModel = new EntertainmentViewModel();
+        }
+
+    
 
 
     }

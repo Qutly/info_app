@@ -13,10 +13,10 @@ namespace info_app
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class NewsAppDBEntities : DbContext
+    public partial class NewsAppDBEntities2 : DbContext
     {
-        public NewsAppDBEntities()
-            : base("name=NewsAppDBEntities")
+        public NewsAppDBEntities2()
+            : base("name=NewsAppDBEntities2")
         {
         }
     
@@ -26,6 +26,7 @@ namespace info_app
         }
     
         public virtual DbSet<Article> Article { get; set; }
+        public virtual DbSet<FavouriteAricles> FavouriteAricles { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

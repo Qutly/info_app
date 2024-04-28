@@ -14,7 +14,7 @@ namespace info_app.Repository
         public int AuthenticateUser(NetworkCredential credential)
         {
             int id = -1;
-            NewsAppDBEntities db = new NewsAppDBEntities();
+            NewsAppDBEntities2 db = new NewsAppDBEntities2();
             var record = db.User.FirstOrDefault(x => x.username == credential.UserName);
             if(record != null)
             {

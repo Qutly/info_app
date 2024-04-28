@@ -25,7 +25,7 @@
         <Binding Path="Isvisible" Mode="TwoWay" Converter="{StaticResource BoolToVis}"/>
     </Window.Visibility>
     <Border
-        Background="MediumPurple"
+        Background="#272537"
         BorderBrush="MediumSlateBlue"
         BorderThickness="5">
         
@@ -41,16 +41,16 @@
                     <ColumnDefinition Width="25"/>
                     <ColumnDefinition Width="5"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Logowanie" FontSize="20" FontFamily="Georgia" Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                <TextBlock Text="Logowanie" FontSize="20" FontFamily="Georgia" Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0" Foreground="White"/>
                 <Button x:Name="buttonMinimize" Content="-" Grid.Column="1" Foreground="Black" Background="Yellow" Cursor="Hand" FontFamily="Georgia" FontSize="15" Click="buttonMinimize_Click"/>
                 <Button x:Name="buttonClose" Content="x" Grid.Column="2" Foreground="Black" Background="OrangeRed" Cursor="Hand" FontFamily="Georgia" FontSize="15" Click="buttonClose_Click"/>
             </Grid>
             <StackPanel Width="250" Grid.Row="2" Orientation="Vertical" Margin="0, 35,0,0">
                 <Image Source="/Images/nobglogo.png" Width="150"/>
-                <TextBlock Text="Zaloguj się!" TextAlignment="Center" FontFamily="Georgia" FontSize="15"></TextBlock>
-                <TextBlock Text="Nazwa Użytkownika" TextAlignment="Left" FontFamily="Georgia" FontSize="11" Margin="0,10,0,0"></TextBlock>
+                <TextBlock Text="Zaloguj się!" TextAlignment="Center" FontFamily="Georgia" FontSize="15"  Foreground="White"></TextBlock>
+                <TextBlock Text="Nazwa Użytkownika" TextAlignment="Left" FontFamily="Georgia" FontSize="11" Margin="0,10,0,0"  Foreground="White"></TextBlock>
                 <TextBox x:Name="usernameTxt" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="0,5,0,0" VerticalContentAlignment="Center" FontFamily="Georgia" BorderThickness="0,0,0,1" Height="23"></TextBox>
-                <TextBlock Text="Hasło" TextAlignment="Left" FontFamily="Georgia" FontSize="11" Margin="0,10,0,0"></TextBlock>
+                <TextBlock Text="Hasło" TextAlignment="Left" FontFamily="Georgia" FontSize="11" Margin="0,10,0,0" Foreground="White"></TextBlock>
                 <TextBox x:Name="passwordTxt" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="0,5,0,0" VerticalContentAlignment="Center" FontFamily="Georgia" BorderThickness="0,0,0,1" Height="23"></TextBox>
                 <TextBlock Text="{Binding Errormsg}" TextAlignment="Left" FontFamily="Georgia" FontSize="11" Margin="0,10,0,0"></TextBlock>
                 <Button x:Name="buttonLogin" Command="{Binding Login}" Content="Zaloguj" Grid.Column="1" Foreground="Black" Background="HotPink" Cursor="Hand" FontFamily="Georgia" FontSize="15" Width="100" Margin="0,60,0,0"/>
