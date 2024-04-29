@@ -27,7 +27,7 @@ namespace info_app.Views
             _viewModel = new EntertainmentViewModel();
             DataContext = _viewModel;
         }
-        private async void HomeView_Loaded(object sender, RoutedEventArgs e)
+        private async void EntertainmentView_Loaded(object sender, RoutedEventArgs e)
         {
             await _viewModel.LoadDataFromApiAsync();
         }

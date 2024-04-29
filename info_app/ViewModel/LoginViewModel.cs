@@ -90,12 +90,25 @@ namespace info_app.ViewModel
 
 
         public ICommand Login { get; }
+        public ICommand Register { get; }
+
+        UserRegister _viewRegister;
 
         public LoginViewModel()
         {
             userInterface = new UserRepository();
             Login = new RelayCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+            Register = new RelayCommand(ExecuteRegisterCommand);
         }
+
+        private void ExecuteRegisterCommand(object obj)
+        {
+            _viewRegister = new UserRegister();
+            RegisterViewModel registerViewModel = new RegisterViewModel(_viewRegister);
+            _viewRegister.DataContext = registerViewModel; // Ustawienie kontekstu danych dla okna rejestracji
+            _viewRegister.Show();
+        }
+
 
         private bool CanExecuteLoginCommand(object obj)
         {

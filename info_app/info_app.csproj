@@ -196,9 +196,11 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\EntertainmentViewModel.cs" />
     <Compile Include="ViewModel\FavouritesViewModel.cs" />
+    <Compile Include="ViewModel\HealthViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="Views\EntertainmentView.xaml.cs">
       <DependentUpon>EntertainmentView.xaml</DependentUpon>
@@ -227,6 +229,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\UserRegister.xaml.cs">
+      <DependentUpon>UserRegister.xaml</DependentUpon>
     </Compile>
     <Page Include="Style\StylePrzyciski.xaml">
       <SubType>Designer</SubType>
@@ -273,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

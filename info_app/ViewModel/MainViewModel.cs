@@ -44,13 +44,20 @@ namespace info_app.ViewModel
         public ICommand ShowHomeViewCommand { get; }
         public ICommand ShowFavouritesViewCommand { get; }
         public ICommand ShowEntertainmentViewCommand { get; }
+        public ICommand ShowHealthViewCommand { get; }
 
         public MainViewModel()
         {
             ShowHomeViewCommand = new RelayCommand(ExecuteShowHomeViewCommand);
             ShowFavouritesViewCommand = new RelayCommand(ExecuteShowFavouritesViewCommand);
             ShowEntertainmentViewCommand = new RelayCommand(ExecuteShowEntertainmentViewCommand);
+            ShowHealthViewCommand = new RelayCommand(ExecuteShowHealthViewCommand);
             ExecuteShowHomeViewCommand(null);
+        }
+
+        private void ExecuteShowHealthViewCommand(object obj)
+        {
+            CurrentChildViewModel = new HealthViewModel();
         }
 
         private void ExecuteShowFavouritesViewCommand(object obj)

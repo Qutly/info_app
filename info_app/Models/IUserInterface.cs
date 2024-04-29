@@ -10,5 +10,6 @@ namespace info_app.Models
     public interface IUserInterface
     {
         int AuthenticateUser(NetworkCredential credential);
+        bool RegisterUser(NetworkCredential credential, string email);
     }
 }

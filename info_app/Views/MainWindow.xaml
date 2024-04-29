@@ -23,6 +23,12 @@
         <DataTemplate DataType="{x:Type viewModel:FavouritesViewModel}">
             <local:FavouritesView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:EntertainmentViewModel}">
+            <local:EntertainmentView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:HealthViewModel}">
+            <local:HealthView />
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -56,7 +62,6 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ShowFavouritesViewCommand}"
                              Margin="0,0,0,30"
-                             IsChecked="True" Checked="RadioButton_Checked"
                              />
                 <RadioButton Content="Home"
                              Height="50"
@@ -71,19 +76,13 @@
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ShowEntertainmentViewCommand}"
-                             />
-                <RadioButton Content="General"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"
-                             />
+                             Command="{Binding ShowEntertainmentViewCommand}" />
                 <RadioButton Content="Health"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ShowHealthViewCommand}"
                              />
                 <RadioButton Content="Science"
                              Height="50"
@@ -91,12 +90,7 @@
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              />
-                <RadioButton Content="Technology"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"
-                             />
+
             </StackPanel>
 
             <StackPanel Grid.Row="2" VerticalAlignment="Bottom">

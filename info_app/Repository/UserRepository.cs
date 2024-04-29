@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace info_app.Repository
 {
@@ -14,16 +16,35 @@ namespace info_app.Repository
         public int AuthenticateUser(NetworkCredential credential)
         {
             int id = -1;
-            NewsAppDBEntities2 db = new NewsAppDBEntities2();
-            var record = db.User.FirstOrDefault(x => x.username == credential.UserName);
-            if(record != null)
+            using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
             {
-                if (record.password == credential.Password)
+                var record = db.User.FirstOrDefault(x => x.username == credential.UserName);
+                if (record != null)
                 {
-                    id = record.UserId;
+                    if (record.password == credential.Password)
+                    {
+                        id = record.UserId;
+                    }
                 }
+                return id;
             }
-            return id;
+        }
+
+        public bool RegisterUser(NetworkCredential credential, string email)
+        {
+            using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
+            {
+                bool valid;
+                bool isEmailUnique = !db.User.Any(u => u.email == email);
+                bool isUsernameUnique = !db.User.Any(u => u.username == credential.UserName);
+                if (isEmailUnique && isUsernameUnique)
+                {
+                    valid = true;
+                }
+                else
+                    valid = false;
+                return valid;
+            }
         }
     }
 }

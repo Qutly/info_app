@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace info_app.Views
@@ -17,7 +18,7 @@ namespace info_app.Views
     /// <summary>
     /// Logika interakcji dla klasy ScienceView.xaml
     /// </summary>
-    public partial class ScienceView : Window
+    public partial class ScienceView : UserControl
     {
         public ScienceView()
         {

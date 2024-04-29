@@ -8,13 +8,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Media;
-
 
 namespace info_app.ViewModel
 {
-    public class HomeViewModel : BaseViewModel
+    public class HealthViewModel: BaseViewModel
     {
         private ObservableCollection<Article> _TopArticles;
         public List<Article> Articles { get; set; }
@@ -30,7 +27,7 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(TopArticles));
             }
         }
-        public HomeViewModel()
+        public HealthViewModel()
         {
             TopArticles = new ObservableCollection<Article>();
         }
@@ -42,7 +39,7 @@ namespace info_app.ViewModel
             {
                 using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
                 {
-                    if(db.Article.Any(article => article.topic == selectedArticle.topic))
+                    if (db.Article.Any(article => article.topic == selectedArticle.topic))
                     {
 
                     }
@@ -58,8 +55,8 @@ namespace info_app.ViewModel
                         };
                         db.FavouriteAricles.Add(FavObj);
                         db.SaveChanges();
-                    } 
-                    
+                    }
+
                 }
             }
             catch (DbEntityValidationException ex)
@@ -85,7 +82,7 @@ namespace info_app.ViewModel
             {
                 try
                 {
-                    var endpoint = new Uri("https://newsapi.org/v2/top-headlines?country=us&category=entertainment&country=pl&apiKey=154c124767314fe8b90474373b282a44");
+                    var endpoint = new Uri("https://newsapi.org/v2/top-headlines?country=us&category=health&country=pl&apiKey=154c124767314fe8b90474373b282a44");
                     var request = new HttpRequestMessage(HttpMethod.Get, endpoint);
 
                     request.Headers.Add("User-Agent", "info_app/1.0");
@@ -103,7 +100,7 @@ namespace info_app.ViewModel
                         {
                             topic = articleResponse.Title,
                             url = articleResponse.Url,
-                            category = "Entertainment",
+                            category = "Health",
                             author = articleResponse.Author,
                             description = ""
                         });
@@ -112,7 +109,7 @@ namespace info_app.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());  
+                    Console.WriteLine(ex.ToString());
                 }
 
                 finally
