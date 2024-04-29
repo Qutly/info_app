@@ -45,6 +45,7 @@ namespace info_app.ViewModel
         public ICommand ShowFavouritesViewCommand { get; }
         public ICommand ShowEntertainmentViewCommand { get; }
         public ICommand ShowHealthViewCommand { get; }
+        public ICommand ShowScienceViewCommand { get; }
 
         public MainViewModel()
         {
@@ -52,7 +53,13 @@ namespace info_app.ViewModel
             ShowFavouritesViewCommand = new RelayCommand(ExecuteShowFavouritesViewCommand);
             ShowEntertainmentViewCommand = new RelayCommand(ExecuteShowEntertainmentViewCommand);
             ShowHealthViewCommand = new RelayCommand(ExecuteShowHealthViewCommand);
+            ShowScienceViewCommand = new RelayCommand(ExecuteShowScienceViewCommand);
             ExecuteShowHomeViewCommand(null);
+        }
+
+        private void ExecuteShowScienceViewCommand(object obj)
+        {
+            CurrentChildViewModel = new ScienceViewModel();
         }
 
         private void ExecuteShowHealthViewCommand(object obj)

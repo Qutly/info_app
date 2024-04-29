@@ -11,5 +11,7 @@ namespace info_app.Models
     {
         int AuthenticateUser(NetworkCredential credential);
         bool RegisterUser(NetworkCredential credential, string email);
+
+        User GetByUsername(string username);
     }
 }

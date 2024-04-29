@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Models\IUserInterface.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserAccount.cs" />
     <Compile Include="NewsAppDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,6 +203,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ScienceViewModel.cs" />
     <Compile Include="Views\EntertainmentView.xaml.cs">
       <DependentUpon>EntertainmentView.xaml</DependentUpon>
     </Compile>

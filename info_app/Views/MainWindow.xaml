@@ -29,6 +29,9 @@
         <DataTemplate DataType="{x:Type viewModel:HealthViewModel}">
             <local:HealthView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ScienceViewModel}">
+            <local:ScienceView />
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -89,6 +92,7 @@
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ShowScienceViewCommand}"
                              />
 
             </StackPanel>

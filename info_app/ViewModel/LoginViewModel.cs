@@ -127,6 +127,7 @@ namespace info_app.ViewModel
             if(userId != -1)
             {
                 Isvisible = false;
+                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username),null);
                 UserId = userId;
             }
             else

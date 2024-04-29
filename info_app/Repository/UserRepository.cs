@@ -46,5 +46,18 @@ namespace info_app.Repository
                 return valid;
             }
         }
+
+        public Models.User GetByUsername(string username)
+        {
+            Models.User user = null;
+            user = new Models.User()
+            {
+                username = username,
+                email = "",
+                UserId = 0,
+                password = ""
+            };
+            return user;
+        }
     }
 }

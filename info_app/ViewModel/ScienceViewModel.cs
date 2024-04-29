@@ -1,5 +1,6 @@
 ﻿using info_app.API;
 using info_app.Models;
+using info_app.Repository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,16 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using info_app.Models;
-using info_app.Repository;
 using System.Threading;
-using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace info_app.ViewModel
 {
-    public class EntertainmentViewModel: BaseViewModel
+    public class ScienceViewModel: BaseViewModel
     {
         private ObservableCollection<Article> _TopArticles;
+        public List<Article> Articles { get; set; }
+
         private IUserInterface _UserInterface;
 
         private UserAccount _userAccount;
@@ -34,7 +34,6 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(CurrentUserAccount)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
             }
         }
-        public List<Article> Articles { get; set; }
         public ObservableCollection<Article> TopArticles
         {
             get
@@ -47,7 +46,7 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(TopArticles));
             }
         }
-        public EntertainmentViewModel()
+        public ScienceViewModel()
         {
             _UserInterface = new UserRepository();
             LoadData();
@@ -82,7 +81,7 @@ namespace info_app.ViewModel
                     else
                     {
                         var user = db.User.FirstOrDefault(u => u.username == CurrentUserAccount.Username);
-                        if(user != null)
+                        if (user != null)
                         {
                             db.Article.Add(selectedArticle);
                             db.SaveChanges();
@@ -95,7 +94,7 @@ namespace info_app.ViewModel
                             db.FavouriteAricles.Add(FavObj);
                             db.SaveChanges();
                         }
-                        
+                            
                     }
 
                 }
@@ -123,7 +122,7 @@ namespace info_app.ViewModel
             {
                 try
                 {
-                    var endpoint = new Uri("https://newsapi.org/v2/top-headlines?country=us&category=entertainment&country=pl&apiKey=154c124767314fe8b90474373b282a44");
+                    var endpoint = new Uri("https://newsapi.org/v2/top-headlines?country=us&category=science&country=pl&apiKey=154c124767314fe8b90474373b282a44");
                     var request = new HttpRequestMessage(HttpMethod.Get, endpoint);
 
                     request.Headers.Add("User-Agent", "info_app/1.0");
@@ -147,7 +146,7 @@ namespace info_app.ViewModel
                                     {
                                         topic = articleResponse.Title,
                                         url = articleResponse.Url,
-                                        category = "Entertainment",
+                                        category = "Science",
                                         author = articleResponse.Author,
                                         description = ""
                                     });
