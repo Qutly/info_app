@@ -19,29 +19,44 @@ namespace info_app.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Konstruktor klasy MainWindow.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Metoda obsługująca przeciąganie okna za pasek tytułowy.
+        /// </summary>
         private void ControlBarLeftButton(object sender, RoutedEventArgs e)
         {
             DragMove();
         }
 
+        /// <summary>
+        /// Obsługuje zdarzenie kliknięcia przycisku minimalizacji.
+        /// </summary>
         private void buttonMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
+        /// <summary>
+        /// Obsługuje zdarzenie kliknięcia przycisku zamknięcia okna.
+        /// </summary>
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Obsługuje zdarzenie zaznaczenia przycisku typu RadioButton.
+        /// </summary>
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-
+            // Tu można umieścić logikę związana z obsługą zdarzenia zaznaczenia przycisku RadioButton
         }
     }
 }

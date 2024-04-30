@@ -22,29 +22,16 @@ namespace info_app.Views
     public partial class HomeView : UserControl
     {
         private readonly HomeViewModel _viewModel;
+
+        /// <summary>
+        /// Konstruktor klasy HomeView.
+        /// </summary>
         public HomeView()
         {
             InitializeComponent();
             _viewModel = new HomeViewModel();
             DataContext = _viewModel;
         }
-        private async void HomeView_Loaded(object sender, RoutedEventArgs e)
-        {
-            await _viewModel.LoadDataFromApiAsync();
-        }
-
-
-        private void AddToFavourites_Click(object sender, RoutedEventArgs e)
-        {
-            var text = (sender as Button).Tag as string;
-
-        }
-
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            int index = int.Parse((string)button.Tag); // Assuming Tag is set with the index
-            _viewModel.WykonajAkcje(index);
-        }
     }
 }
+

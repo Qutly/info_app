@@ -13,14 +13,21 @@ using MySqlX.XDevAPI;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using info_app.Views;
+using System.Windows;
 
 namespace info_app.ViewModel
 {
-    public class MainViewModel: BaseViewModel
+    /// <summary>
+    /// Klasa ViewModelu głównego widoku.
+    /// </summary>
+    public class MainViewModel : BaseViewModel
     {
         private BaseViewModel _currentChildView;
         private int _UserId;
-        
+
+        /// <summary>
+        /// ID użytkownika.
+        /// </summary>
         public int UserId
         {
             get { return _UserId; }
@@ -30,6 +37,10 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(UserId));
             }
         }
+
+        /// <summary>
+        /// Aktualny widok podrzędny.
+        /// </summary>
         public BaseViewModel CurrentChildViewModel
         {
             get
@@ -42,16 +53,35 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(CurrentChildViewModel));
             }
         }
+
+        /// <summary>
+        /// Polecenie do wyświetlenia widoku strony głównej.
+        /// </summary>
         public ICommand ShowHomeViewCommand { get; }
+
+        /// <summary>
+        /// Polecenie do wyświetlenia widoku ulubionych.
+        /// </summary>
         public ICommand ShowFavouritesViewCommand { get; }
+
+        /// <summary>
+        /// Polecenie do wyświetlenia widoku rozrywki.
+        /// </summary>
         public ICommand ShowEntertainmentViewCommand { get; }
+
+        /// <summary>
+        /// Polecenie do wyświetlenia widoku zdrowia.
+        /// </summary>
         public ICommand ShowHealthViewCommand { get; }
+
+        /// <summary>
+        /// Polecenie do wyświetlenia widoku nauki.
+        /// </summary>
         public ICommand ShowScienceViewCommand { get; }
 
-        public ICommand LogOutCommand { get; }
-
-        UserLogin _loginView;
-
+        /// <summary>
+        /// Konstruktor ViewModelu głównego widoku.
+        /// </summary>
         public MainViewModel()
         {
             ShowHomeViewCommand = new RelayCommand(ExecuteShowHomeViewCommand);
@@ -59,46 +89,47 @@ namespace info_app.ViewModel
             ShowEntertainmentViewCommand = new RelayCommand(ExecuteShowEntertainmentViewCommand);
             ShowHealthViewCommand = new RelayCommand(ExecuteShowHealthViewCommand);
             ShowScienceViewCommand = new RelayCommand(ExecuteShowScienceViewCommand);
-            LogOutCommand = new RelayCommand(ExecuteLogOutCommand);
             ExecuteShowHomeViewCommand(null);
         }
 
-        private void ExecuteLogOutCommand(object obj)
-        {
-            _loginView = new UserLogin();
-            LoginViewModel loginViewModel = new LoginViewModel();
-            _loginView.Show();
-
-        }
-
+        /// <summary>
+        /// Metoda wykonująca polecenie wyświetlenia widoku nauki.
+        /// </summary>
         private void ExecuteShowScienceViewCommand(object obj)
         {
             CurrentChildViewModel = new ScienceViewModel();
         }
 
+        /// <summary>
+        /// Metoda wykonująca polecenie wyświetlenia widoku zdrowia.
+        /// </summary>
         private void ExecuteShowHealthViewCommand(object obj)
         {
             CurrentChildViewModel = new HealthViewModel();
         }
 
+        /// <summary>
+        /// Metoda wykonująca polecenie wyświetlenia widoku ulubionych.
+        /// </summary>
         private void ExecuteShowFavouritesViewCommand(object obj)
         {
             CurrentChildViewModel = new FavouritesViewModel();
         }
 
+        /// <summary>
+        /// Metoda wykonująca polecenie wyświetlenia widoku strony głównej.
+        /// </summary>
         private void ExecuteShowHomeViewCommand(object obj)
         {
             CurrentChildViewModel = new HomeViewModel();
-
         }
 
+        /// <summary>
+        /// Metoda wykonująca polecenie wyświetlenia widoku rozrywki.
+        /// </summary>
         private void ExecuteShowEntertainmentViewCommand(object obj)
         {
             CurrentChildViewModel = new EntertainmentViewModel();
         }
-
-    
-
-
     }
 }

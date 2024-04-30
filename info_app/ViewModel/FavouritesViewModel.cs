@@ -10,11 +10,18 @@ using System.Threading.Tasks;
 
 namespace info_app.ViewModel
 {
-    public class FavouritesViewModel: BaseViewModel
+    /// <summary>
+    /// ViewModel dla widoku ulubionych artykułów.
+    /// </summary>
+    public class FavouritesViewModel : BaseViewModel
     {
         private ObservableCollection<Article> _favouriteArticles;
         private IUserInterface _UserInterface;
         private UserAccount _userAccount;
+
+        /// <summary>
+        /// Aktualne konto użytkownika.
+        /// </summary>
         public UserAccount CurrentUserAccount
         {
             get
@@ -28,6 +35,9 @@ namespace info_app.ViewModel
             }
         }
 
+        /// <summary>
+        /// Lista ulubionych artykułów.
+        /// </summary>
         public ObservableCollection<Article> FavouriteArticles
         {
             get { return _favouriteArticles; }
@@ -37,6 +47,10 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(FavouriteArticles));
             }
         }
+
+        /// <summary>
+        /// Metoda wczytująca ulubione artykuły użytkownika.
+        /// </summary>
         private void LoadFavouriteArticles()
         {
             using (NewsAppDBEntities db = new NewsAppDBEntities())
@@ -54,10 +68,13 @@ namespace info_app.ViewModel
                                                                              .ToList());
 
                 }
-                    
+
             }
         }
 
+        /// <summary>
+        /// Konstruktor FavouritesViewModel.
+        /// </summary>
         public FavouritesViewModel()
         {
             _UserInterface = new UserRepository();
@@ -65,6 +82,9 @@ namespace info_app.ViewModel
             LoadFavouriteArticles();
         }
 
+        /// <summary>
+        /// Metoda wczytująca dane.
+        /// </summary>
         private void LoadData()
         {
             var user = _UserInterface.GetByUsername(Thread.CurrentPrincipal.Identity.Name);

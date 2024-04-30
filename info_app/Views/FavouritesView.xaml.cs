@@ -20,6 +20,9 @@ namespace info_app.Views
     /// </summary>
     public partial class FavouritesView : UserControl
     {
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public FavouritesView()
         {
             InitializeComponent();

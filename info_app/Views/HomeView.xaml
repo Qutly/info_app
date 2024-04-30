@@ -9,8 +9,7 @@
              xmlns:viewModel="clr-namespace:info_app.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="450"
-             d:DesignWidth="800"
-             Loaded="HomeView_Loaded">
+             d:DesignWidth="800">
     <UserControl.DataContext>
         <viewModel:HomeViewModel />
     </UserControl.DataContext>

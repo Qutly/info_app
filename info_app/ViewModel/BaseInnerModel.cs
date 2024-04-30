@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace info_app.ViewModel
 {
+    /// <summary>
+    /// Konstruktor Bazowego Modelu.
+    /// </summary>
     public class BaseInnerModel
     {
 

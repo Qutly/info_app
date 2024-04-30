@@ -12,10 +12,15 @@ using info_app.Views;
 namespace info_app
 {
     /// <summary>
-    /// Logika interakcji dla klasy App.xaml
+    /// Klasa reprezentująca aplikację.
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Metoda wywoływana podczas uruchamiania aplikacji.
+        /// </summary>
+        /// <param name="sender">Obiekt źródłowy zdarzenia.</param>
+        /// <param name="e">Argumenty zdarzenia Startup.</param>
         protected void ApplicationStart(object sender, StartupEventArgs e)
         {
             var loginView = new UserLogin();
@@ -23,10 +28,10 @@ namespace info_app
 
             loginView.IsVisibleChanged += async (s, ev) =>
             {
-                if(loginView.IsVisible == false && loginView.IsLoaded)
+                if (loginView.IsVisible == false && loginView.IsLoaded)
                 {
-                    //var mainViewModel = new MainViewModel();
-                    //await mainViewModel.LoadArticlesAsync();
+
+                    // Otwarcie widoku głównego po zalogowaniu i zamknięciu widoku logowania.
                     var mainView = new MainWindow();
                     mainView.Show();
                     loginView.Close();
@@ -34,4 +39,5 @@ namespace info_app
             };
         }
     }
+
 }

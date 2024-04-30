@@ -11,23 +11,56 @@ namespace info_app
 {
     using System;
     using System.Collections.Generic;
-    
+
+    /// <summary>
+    /// Klasa reprezentuj¹ca artyku³.
+    /// </summary>
     public partial class Article
     {
+        /// <summary>
+        /// Konstruktor klasy Article.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Article()
         {
             this.FavouriteAricles = new HashSet<FavouriteAricles>();
         }
-    
+
+        /// <summary>
+        /// Identyfikator artyku³u.
+        /// </summary>
         public int ArticleId { get; set; }
+
+        /// <summary>
+        /// Temat artyku³u.
+        /// </summary>
         public string topic { get; set; }
+
+        /// <summary>
+        /// Kategoria artyku³u.
+        /// </summary>
         public string category { get; set; }
+
+        /// <summary>
+        /// Opis artyku³u.
+        /// </summary>
         public string description { get; set; }
+
+        /// <summary>
+        /// URL artyku³u.
+        /// </summary>
         public string url { get; set; }
+
+        /// <summary>
+        /// Autor artyku³u.
+        /// </summary>
         public string author { get; set; }
-    
+
+        /// <summary>
+        /// Kolekcja ulubionych artyku³ów.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavouriteAricles> FavouriteAricles { get; set; }
     }
 }
+

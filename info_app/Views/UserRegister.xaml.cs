@@ -19,21 +19,33 @@ namespace info_app.Views
     /// </summary>
     public partial class UserRegister : Window
     {
+        /// <summary>
+        /// Konstruktor klasy UserRegister.
+        /// </summary>
         public UserRegister()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Obsługuje zdarzenie kliknięcia przycisku minimalizacji.
+        /// </summary>
         private void buttonMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
+        /// <summary>
+        /// Obsługuje zdarzenie kliknięcia przycisku zamknięcia okna.
+        /// </summary>
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Metoda zamykająca okno.
+        /// </summary>
         public void CloseWindow()
         {
             this.Close();

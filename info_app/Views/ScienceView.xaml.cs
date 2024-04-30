@@ -16,35 +16,48 @@ using System.Windows.Shapes;
 
 namespace info_app.Views
 {
-    /// <summary>
-    /// Logika interakcji dla klasy ScienceView.xaml
-    /// </summary>
-    public partial class ScienceView : UserControl
-    {
-        private readonly ScienceViewModel _viewModel;
-        public ScienceView()
+        /// <summary>
+        /// Logika interakcji dla klasy ScienceView.xaml
+        /// </summary>
+        public partial class ScienceView : UserControl
         {
-            InitializeComponent();
-            _viewModel = new ScienceViewModel();
-            DataContext = _viewModel;
-        }
-        private async void ScienceView_Loaded(object sender, RoutedEventArgs e)
-        {
-            await _viewModel.LoadDataFromApiAsync();
-        }
+            private readonly ScienceViewModel _viewModel;
 
+            /// <summary>
+            /// Konstruktor klasy ScienceView.
+            /// </summary>
+            public ScienceView()
+            {
+                InitializeComponent();
+                _viewModel = new ScienceViewModel();
+                DataContext = _viewModel;
+            }
 
-        private void AddToFavourites_Click(object sender, RoutedEventArgs e)
-        {
-            var text = (sender as Button).Tag as string;
+            /// <summary>
+            /// Metoda wywoływana po załadowaniu widoku.
+            /// </summary>
+            private async void ScienceView_Loaded(object sender, RoutedEventArgs e)
+            {
+                await _viewModel.LoadDataFromApiAsync();
+            }
 
+            /// <summary>
+            /// Obsługa zdarzenia kliknięcia przycisku "AddToFavourites".
+            /// </summary>
+            private void AddToFavourites_Click(object sender, RoutedEventArgs e)
+            {
+                var text = (sender as Button).Tag as string;
+                // Tutaj możesz dodać logikę obsługi zdarzenia, np. dodawanie do ulubionych.
+            }
+
+            /// <summary>
+            /// Obsługa zdarzenia kliknięcia przycisku.
+            /// </summary>
+            private void Button1_Click(object sender, RoutedEventArgs e)
+            {
+                Button button = (Button)sender;
+                int index = int.Parse((string)button.Tag); // Zakładając, że Tag jest ustawiony z indeksem.
+                _viewModel.WykonajAkcje(index);
+            }
         }
-
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            int index = int.Parse((string)button.Tag); // Assuming Tag is set with the index
-            _viewModel.WykonajAkcje(index);
-        }
-    }
 }

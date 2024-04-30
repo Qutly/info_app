@@ -14,11 +14,18 @@ using System.Threading.Tasks;
 
 namespace info_app.ViewModel
 {
+    /// <summary>
+    /// ViewModel dla widoku zdrowia.
+    /// </summary>
     public class HealthViewModel : BaseViewModel
     {
         private IUserInterface _UserInterface;
 
         private UserAccount _userAccount;
+
+        /// <summary>
+        /// Aktualne konto użytkownika.
+        /// </summary>
         public UserAccount CurrentUserAccount
         {
             get
@@ -31,8 +38,17 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(CurrentUserAccount)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
             }
         }
+
         private ObservableCollection<Article> _TopArticles;
+
+        /// <summary>
+        /// Lista najlepszych artykułów.
+        /// </summary>
         public List<Article> Articles { get; set; }
+
+        /// <summary>
+        /// Lista najlepszych artykułów jako kolekcja obserwowalna.
+        /// </summary>
         public ObservableCollection<Article> TopArticles
         {
             get
@@ -45,6 +61,10 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(TopArticles));
             }
         }
+
+        /// <summary>
+        /// Konstruktor HealthViewModel.
+        /// </summary>
         public HealthViewModel()
         {
             _UserInterface = new UserRepository();
@@ -52,6 +72,9 @@ namespace info_app.ViewModel
             TopArticles = new ObservableCollection<Article>();
         }
 
+        /// <summary>
+        /// Metoda ładująca dane.
+        /// </summary>
         private void LoadData()
         {
             var user = _UserInterface.GetByUsername(Thread.CurrentPrincipal.Identity.Name);
@@ -65,6 +88,11 @@ namespace info_app.ViewModel
 
             }
         }
+
+        /// <summary>
+        /// Wykonuje akcję dla wybranego artykułu.
+        /// </summary>
+        /// <param name="index">Indeks wybranego artykułu.</param>
         public void WykonajAkcje(int index)
         {
             Article selectedArticle = TopArticles[index];
@@ -114,8 +142,12 @@ namespace info_app.ViewModel
             }
         }
 
+        /// <summary>
+        /// Asynchronicznie ładuje dane z API.
+        /// </summary>
         internal async Task LoadDataFromApiAsync()
         {
+            var i = 0;
             using (HttpClient client = new HttpClient())
             {
                 try
@@ -135,7 +167,7 @@ namespace info_app.ViewModel
                         {
                             var articlesResponse = JsonConvert.DeserializeObject<NewsApiResponse>(result);
                             Articles = new List<Article>();
-                            for (int i = 0; i < 6 && i < articlesResponse.Articles.Count; i++)
+                            while (Articles.Count < 6)
                             {
                                 var articleResponse = articlesResponse.Articles[i];
                                 if (!string.IsNullOrWhiteSpace(articleResponse.Title) && !string.IsNullOrWhiteSpace(articleResponse.Url) && !string.IsNullOrWhiteSpace(articleResponse.Author))
@@ -149,6 +181,7 @@ namespace info_app.ViewModel
                                         description = ""
                                     });
                                 }
+                                i++;
                             }
                             TopArticles = new ObservableCollection<Article>(Articles);
                         }

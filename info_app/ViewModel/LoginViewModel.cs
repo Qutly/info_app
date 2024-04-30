@@ -13,6 +13,9 @@ using System.Security.Principal;
 
 namespace info_app.ViewModel
 {
+    /// <summary>
+    /// Klasa ViewModelu logowania.
+    /// </summary>
     public class LoginViewModel : BaseViewModel
     {
         private string _username;
@@ -23,6 +26,9 @@ namespace info_app.ViewModel
 
         private IUserInterface userInterface;
 
+        /// <summary>
+        /// ID użytkownika.
+        /// </summary>
         public int UserId
         {
             get
@@ -32,10 +38,13 @@ namespace info_app.ViewModel
             set
             {
                 _UserId = value;
-                OnPropertyChanged(nameof(UserId)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(UserId));
             }
         }
 
+        /// <summary>
+        /// Nazwa użytkownika.
+        /// </summary>
         public string Username
         {
             get
@@ -45,10 +54,13 @@ namespace info_app.ViewModel
             set
             {
                 _username = value;
-                OnPropertyChanged(nameof(Username)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Username));
             }
         }
 
+        /// <summary>
+        /// Hasło użytkownika.
+        /// </summary>
         public string Password
         {
             get
@@ -58,11 +70,13 @@ namespace info_app.ViewModel
             set
             {
                 _password = value;
-                OnPropertyChanged(nameof(Password)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Password));
             }
         }
 
-
+        /// <summary>
+        /// Flaga określająca widoczność.
+        /// </summary>
         public bool Isvisible
         {
             get
@@ -72,9 +86,13 @@ namespace info_app.ViewModel
             set
             {
                 _isvisible = value;
-                OnPropertyChanged(nameof(Isvisible)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Isvisible));
             }
         }
+
+        /// <summary>
+        /// Komunikat o błędzie.
+        /// </summary>
         public string Errormsg
         {
             get
@@ -84,16 +102,25 @@ namespace info_app.ViewModel
             set
             {
                 _errormsg = value;
-                OnPropertyChanged(nameof(Errormsg)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Errormsg));
             }
         }
 
-
+        /// <summary>
+        /// Polecenie logowania.
+        /// </summary>
         public ICommand Login { get; }
+
+        /// <summary>
+        /// Polecenie rejestracji.
+        /// </summary>
         public ICommand Register { get; }
 
         UserRegister _viewRegister;
 
+        /// <summary>
+        /// Konstruktor ViewModelu logowania.
+        /// </summary>
         public LoginViewModel()
         {
             userInterface = new UserRepository();
@@ -101,18 +128,22 @@ namespace info_app.ViewModel
             Register = new RelayCommand(ExecuteRegisterCommand);
         }
 
+        /// <summary>
+        /// Metoda wywoływana po naciśnięciu przycisku rejestracji.
+        /// </summary>
         private void ExecuteRegisterCommand(object obj)
         {
             _viewRegister = new UserRegister();
             RegisterViewModel registerViewModel = new RegisterViewModel(_viewRegister);
-            _viewRegister.DataContext = registerViewModel; // Ustawienie kontekstu danych dla okna rejestracji
+            _viewRegister.DataContext = registerViewModel;
             _viewRegister.Show();
         }
 
-
+        /// <summary>
+        /// Metoda sprawdzająca, czy można wykonać polecenie logowania.
+        /// </summary>
         private bool CanExecuteLoginCommand(object obj)
         {
-            
             bool valid;
             if (string.IsNullOrEmpty(Username) || Username.Length < 3 || Username == null || Password == null)
                 valid = false;
@@ -121,13 +152,16 @@ namespace info_app.ViewModel
             return valid;
         }
 
+        /// <summary>
+        /// Metoda wywoływana po naciśnięciu przycisku logowania.
+        /// </summary>
         private void ExecuteLoginCommand(object obj)
         {
             var userId = userInterface.AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
-            if(userId != -1)
+            if (userId != -1)
             {
                 Isvisible = false;
-                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username),null);
+                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
                 UserId = userId;
             }
             else

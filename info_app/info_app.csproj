@@ -38,10 +38,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>documentation\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>documentation\info_app.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -174,21 +175,6 @@
     <Compile Include="Models\IUserInterface.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserAccount.cs" />
-    <Compile Include="NewsAppDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NewsAppDBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewsAppDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewsAppDBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="NewsAppDBModel1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -317,16 +303,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="NewsAppDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
-      <LastGenOutput>NewsAppDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="NewsAppDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
-      <LastGenOutput>NewsAppDBModel.cs</LastGenOutput>
-    </Content>
     <Content Include="NewsAppDBModel1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NewsAppDBModel1.edmx</DependentUpon>
@@ -346,13 +322,6 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
-    <EntityDeploy Include="NewsAppDBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NewsAppDBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="NewsAppDBModel.edmx.diagram">
-      <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
-    </None>
     <EntityDeploy Include="NewsAppDBModel1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NewsAppDBModel1.Designer.cs</LastGenOutput>

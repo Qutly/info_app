@@ -12,6 +12,9 @@ using System.Windows.Input;
 
 namespace info_app.ViewModel
 {
+    /// <summary>
+    /// Klasa ViewModelu rejestracji.
+    /// </summary>
     public class RegisterViewModel : BaseViewModel
     {
         private string _username;
@@ -22,20 +25,31 @@ namespace info_app.ViewModel
 
         private IUserInterface userInterface;
 
-
         private UserRegister _userRegister;
 
+        /// <summary>
+        /// Konstruktor ViewModelu rejestracji.
+        /// </summary>
+        /// <param name="userRegister">Referencja do widoku rejestracji.</param>
         public RegisterViewModel(UserRegister userRegister)
         {
             _userRegister = userRegister;
             userInterface = new UserRepository();
             Register = new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
         }
+
+        /// <summary>
+        /// Domyślny konstruktor ViewModelu rejestracji.
+        /// </summary>
         public RegisterViewModel()
         {
             userInterface = new UserRepository();
             Register = new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
         }
+
+        /// <summary>
+        /// Nazwa użytkownika.
+        /// </summary>
         public string Username
         {
             get
@@ -45,10 +59,13 @@ namespace info_app.ViewModel
             set
             {
                 _username = value;
-                OnPropertyChanged(nameof(Username)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Username));
             }
         }
 
+        /// <summary>
+        /// Hasło użytkownika.
+        /// </summary>
         public string Password
         {
             get
@@ -58,10 +75,13 @@ namespace info_app.ViewModel
             set
             {
                 _password = value;
-                OnPropertyChanged(nameof(Password)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Password));
             }
         }
 
+        /// <summary>
+        /// Adres email użytkownika.
+        /// </summary>
         public string Email
         {
             get
@@ -71,11 +91,13 @@ namespace info_app.ViewModel
             set
             {
                 _email = value;
-                OnPropertyChanged(nameof(Email)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Email));
             }
         }
 
-
+        /// <summary>
+        /// Flaga określająca widoczność.
+        /// </summary>
         public bool Isvisible
         {
             get
@@ -85,9 +107,13 @@ namespace info_app.ViewModel
             set
             {
                 _isvisible = value;
-                OnPropertyChanged(nameof(Isvisible)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Isvisible));
             }
         }
+
+        /// <summary>
+        /// Komunikat o błędzie.
+        /// </summary>
         public string Errormsg
         {
             get
@@ -97,11 +123,15 @@ namespace info_app.ViewModel
             set
             {
                 _errormsg = value;
-                OnPropertyChanged(nameof(Errormsg)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
+                OnPropertyChanged(nameof(Errormsg));
             }
         }
 
-
+        /// <summary>
+        /// Sprawdza poprawność adresu email.
+        /// </summary>
+        /// <param name="email">Adres email do sprawdzenia.</param>
+        /// <returns>Prawda, jeśli adres email jest poprawny; w przeciwnym razie fałsz.</returns>
         public bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -113,14 +143,21 @@ namespace info_app.ViewModel
 
             return valid;
         }
+
+        /// <summary>
+        /// Polecenie rejestracji.
+        /// </summary>
         public ICommand Register { get; }
 
+        /// <summary>
+        /// Metoda sprawdzająca, czy można wykonać polecenie rejestracji.
+        /// </summary>
         private bool CanExecuteRegisterCommand(object obj)
         {
             using (NewsAppDBEntities db = new NewsAppDBEntities())
             {
                 bool valid;
-                if (string.IsNullOrEmpty(Username) || Username.Length < 3 || Username == null || Password == null || Password.Length < 3 ||!IsValidEmail(Email))
+                if (string.IsNullOrEmpty(Username) || Username.Length < 3 || Username == null || Password == null || Password.Length < 3 || !IsValidEmail(Email))
                 {
                     valid = false;
                 }
@@ -129,14 +166,16 @@ namespace info_app.ViewModel
                 return valid;
             }
         }
-                
 
+        /// <summary>
+        /// Metoda wywoływana po naciśnięciu przycisku rejestracji.
+        /// </summary>
         private void ExecuteRegisterCommand(object obj)
         {
-            var isValid = userInterface.RegisterUser(new System.Net.NetworkCredential(Username,Password), Email);
+            var isValid = userInterface.RegisterUser(new System.Net.NetworkCredential(Username, Password), Email);
             if (isValid)
             {
-                using(NewsAppDBEntities db = new NewsAppDBEntities())
+                using (NewsAppDBEntities db = new NewsAppDBEntities())
                 {
                     User user = new User()
                     {
@@ -161,6 +200,5 @@ namespace info_app.ViewModel
                 Errormsg = "Dane istnieją już w bazie danych";
             }
         }
-
     }
 }

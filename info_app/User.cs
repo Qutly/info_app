@@ -7,25 +7,49 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace info_app
 {
-    using System;
-    using System.Collections.Generic;
-    
+    /// <summary>
+    /// Reprezentuje u¿ytkownika aplikacji.
+    /// </summary>
     public partial class User
     {
+        /// <summary>
+        /// Konstruktor domyœlny inicjalizuj¹cy kolekcjê ulubionych artyku³ów u¿ytkownika.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             this.FavouriteAricles = new HashSet<FavouriteAricles>();
         }
-    
+
+        /// <summary>
+        /// Identyfikator u¿ytkownika.
+        /// </summary>
         public int UserId { get; set; }
+
+        /// <summary>
+        /// Nazwa u¿ytkownika.
+        /// </summary>
         public string username { get; set; }
+
+        /// <summary>
+        /// Adres e-mail u¿ytkownika.
+        /// </summary>
         public string email { get; set; }
+
+        /// <summary>
+        /// Has³o u¿ytkownika.
+        /// </summary>
         public string password { get; set; }
-    
+
+        /// <summary>
+        /// Kolekcja ulubionych artyku³ów u¿ytkownika.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavouriteAricles> FavouriteAricles { get; set; }
     }
 }
+

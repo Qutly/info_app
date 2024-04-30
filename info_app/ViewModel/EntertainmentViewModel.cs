@@ -9,19 +9,25 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using info_app.Models;
 using info_app.Repository;
 using System.Threading;
 using System.Data.Entity;
 
 namespace info_app.ViewModel
 {
-    public class EntertainmentViewModel: BaseViewModel
+    /// <summary>
+    /// ViewModel dla widoku rozrywki.
+    /// </summary>
+    public class EntertainmentViewModel : BaseViewModel
     {
         private ObservableCollection<Article> _TopArticles;
         private IUserInterface _UserInterface;
 
         private UserAccount _userAccount;
+
+        /// <summary>
+        /// Aktualne konto użytkownika.
+        /// </summary>
         public UserAccount CurrentUserAccount
         {
             get
@@ -34,7 +40,15 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(CurrentUserAccount)); //gdy wartość jest nadawana musimy powiadomić o zmianie property
             }
         }
+
+        /// <summary>
+        /// Lista artykułów.
+        /// </summary>
         public List<Article> Articles { get; set; }
+
+        /// <summary>
+        /// Lista najlepszych artykułów.
+        /// </summary>
         public ObservableCollection<Article> TopArticles
         {
             get
@@ -47,6 +61,10 @@ namespace info_app.ViewModel
                 OnPropertyChanged(nameof(TopArticles));
             }
         }
+
+        /// <summary>
+        /// Konstruktor EntertainmentViewModel.
+        /// </summary>
         public EntertainmentViewModel()
         {
             _UserInterface = new UserRepository();
@@ -54,6 +72,9 @@ namespace info_app.ViewModel
             TopArticles = new ObservableCollection<Article>();
         }
 
+        /// <summary>
+        /// Metoda wczytująca dane.
+        /// </summary>
         private void LoadData()
         {
             var user = _UserInterface.GetByUsername(Thread.CurrentPrincipal.Identity.Name);
@@ -68,6 +89,10 @@ namespace info_app.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda wykonująca akcję na artykule.
+        /// </summary>
+        /// <param name="index">Indeks artykułu.</param>
         public void WykonajAkcje(int index)
         {
             Article selectedArticle = TopArticles[index];
@@ -82,7 +107,7 @@ namespace info_app.ViewModel
                     else
                     {
                         var user = db.User.FirstOrDefault(u => u.username == CurrentUserAccount.Username);
-                        if(user != null)
+                        if (user != null)
                         {
                             db.Article.Add(selectedArticle);
                             db.SaveChanges();
@@ -95,7 +120,7 @@ namespace info_app.ViewModel
                             db.FavouriteAricles.Add(FavObj);
                             db.SaveChanges();
                         }
-                        
+
                     }
 
                 }
@@ -117,8 +142,12 @@ namespace info_app.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda asynchronicznie wczytująca dane z API.
+        /// </summary>
         internal async Task LoadDataFromApiAsync()
         {
+            var i = 0;
             using (HttpClient client = new HttpClient())
             {
                 try
@@ -138,7 +167,7 @@ namespace info_app.ViewModel
                         {
                             var articlesResponse = JsonConvert.DeserializeObject<NewsApiResponse>(result);
                             Articles = new List<Article>();
-                            for (int i = 0; i < 6 && i < articlesResponse.Articles.Count; i++)
+                            while (Articles.Count < 6)
                             {
                                 var articleResponse = articlesResponse.Articles[i];
                                 if (!string.IsNullOrWhiteSpace(articleResponse.Title) && !string.IsNullOrWhiteSpace(articleResponse.Url) && !string.IsNullOrWhiteSpace(articleResponse.Author))
@@ -152,6 +181,7 @@ namespace info_app.ViewModel
                                         description = ""
                                     });
                                 }
+                                i++;
                             }
                             TopArticles = new ObservableCollection<Article>(Articles);
                         }

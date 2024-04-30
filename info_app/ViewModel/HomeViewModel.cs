@@ -14,112 +14,17 @@ using System.Windows.Media;
 
 namespace info_app.ViewModel
 {
+    /// <summary>
+    /// ViewModel dla widoku podstawowego.
+    /// </summary>
     public class HomeViewModel : BaseViewModel
     {
-        private ObservableCollection<Article> _TopArticles;
-        public List<Article> Articles { get; set; }
-        public ObservableCollection<Article> TopArticles
-        {
-            get
-            {
-                return _TopArticles;
-            }
-            set
-            {
-                _TopArticles = value;
-                OnPropertyChanged(nameof(TopArticles));
-            }
-        }
+        /// <summary>
+        /// Konstruktor ViewModelu Home.
+        /// </summary>
         public HomeViewModel()
         {
-            TopArticles = new ObservableCollection<Article>();
-        }
 
-        public void WykonajAkcje(int index)
-        {
-            Article selectedArticle = TopArticles[index];
-            try
-            {
-                using (NewsAppDBEntities db = new NewsAppDBEntities())
-                {
-                    if(db.Article.Any(article => article.topic == selectedArticle.topic))
-                    {
-
-                    }
-                    else
-                    {
-                        db.Article.Add(selectedArticle);
-                        db.SaveChanges();
-                        Console.WriteLine(selectedArticle.ArticleId);
-                        FavouriteAricles FavObj = new FavouriteAricles()
-                        {
-                            ArticleId = selectedArticle.ArticleId,
-                            UserId = 2,
-                        };
-                        db.FavouriteAricles.Add(FavObj);
-                        db.SaveChanges();
-                    } 
-                    
-                }
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        Console.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-
-            }
-        }
-
-        internal async Task LoadDataFromApiAsync()
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                try
-                {
-                    var endpoint = new Uri("https://newsapi.org/v2/top-headlines?country=us&category=entertainment&country=pl&apiKey=154c124767314fe8b90474373b282a44");
-                    var request = new HttpRequestMessage(HttpMethod.Get, endpoint);
-
-                    request.Headers.Add("User-Agent", "info_app/1.0");
-
-                    var response = await client.SendAsync(request);
-
-                    var result = await response.Content.ReadAsStringAsync();
-
-                    var articlesResponse = JsonConvert.DeserializeObject<NewsApiResponse>(result);
-                    Articles = new List<Article>();
-                    for (int i = 0; i < 6 && i < articlesResponse.Articles.Count; i++)
-                    {
-                        var articleResponse = articlesResponse.Articles[i];
-                        Articles.Add(new Article
-                        {
-                            topic = articleResponse.Title,
-                            url = articleResponse.Url,
-                            category = "Entertainment",
-                            author = articleResponse.Author,
-                            description = ""
-                        });
-                    }
-                    TopArticles = new ObservableCollection<Article>(Articles);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());  
-                }
-
-                finally
-                {
-                    client.Dispose();
-                }
-            }
         }
     }
 }

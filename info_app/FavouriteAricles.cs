@@ -11,14 +11,36 @@ namespace info_app
 {
     using System;
     using System.Collections.Generic;
-    
+
+    /// <summary>
+    /// Klasa reprezentuj¹ca ulubione artyku³y u¿ytkownika.
+    /// </summary>
     public partial class FavouriteAricles
     {
+        /// <summary>
+        /// Identyfikator u¿ytkownika.
+        /// </summary>
         public int UserId { get; set; }
+
+        /// <summary>
+        /// Identyfikator artyku³u.
+        /// </summary>
         public int ArticleId { get; set; }
+
+        /// <summary>
+        /// Identyfikator ulubionego artyku³u.
+        /// </summary>
         public int FavArt { get; set; }
-    
+
+        /// <summary>
+        /// Artyku³ bêd¹cy ulubionym.
+        /// </summary>
         public virtual Article Article { get; set; }
+
+        /// <summary>
+        /// U¿ytkownik, do którego nale¿y ulubiony artyku³.
+        /// </summary>
         public virtual User User { get; set; }
     }
 }
+
