@@ -1,0 +1,971 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>info_app</name>
+    </assembly>
+    <members>
+        <member name="T:info_app.Article">
+            <summary>
+            Klasa reprezentująca artykuł.
+            </summary>
+        </member>
+        <member name="M:info_app.Article.#ctor">
+            <summary>
+            Konstruktor klasy Article.
+            </summary>
+        </member>
+        <member name="P:info_app.Article.ArticleId">
+            <summary>
+            Identyfikator artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.Article.topic">
+            <summary>
+            Temat artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.Article.category">
+            <summary>
+            Kategoria artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.Article.description">
+            <summary>
+            Opis artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.Article.url">
+            <summary>
+            URL artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.Article.author">
+            <summary>
+            Autor artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.Article.FavouriteAricles">
+            <summary>
+            Kolekcja ulubionych artykułów.
+            </summary>
+        </member>
+        <member name="T:info_app.FavouriteAricles">
+            <summary>
+            Klasa reprezentująca ulubione artykuły użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.FavouriteAricles.UserId">
+            <summary>
+            Identyfikator użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.FavouriteAricles.ArticleId">
+            <summary>
+            Identyfikator artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.FavouriteAricles.FavArt">
+            <summary>
+            Identyfikator ulubionego artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.FavouriteAricles.Article">
+            <summary>
+            Artykuł będący ulubionym.
+            </summary>
+        </member>
+        <member name="P:info_app.FavouriteAricles.User">
+            <summary>
+            Użytkownik, do którego należy ulubiony artykuł.
+            </summary>
+        </member>
+        <member name="T:info_app.Models.IUserInterface">
+            <summary>
+            Interfejs definiujący operacje związane z użytkownikami.
+            </summary>
+        </member>
+        <member name="M:info_app.Models.IUserInterface.AuthenticateUser(System.Net.NetworkCredential)">
+            <summary>
+            Metoda uwierzytelniająca użytkownika na podstawie danych uwierzytelniających.
+            </summary>
+            <param name="credential">Dane uwierzytelniające.</param>
+            <returns>Identyfikator użytkownika lub -1, jeśli uwierzytelnienie nie powiedzie się.</returns>
+        </member>
+        <member name="M:info_app.Models.IUserInterface.RegisterUser(System.Net.NetworkCredential,System.String)">
+            <summary>
+            Metoda rejestracji użytkownika.
+            </summary>
+            <param name="credential">Dane uwierzytelniające.</param>
+            <param name="email">Adres e-mail użytkownika.</param>
+            <returns>Prawda, jeśli rejestracja zakończyła się sukcesem, w przeciwnym razie fałsz.</returns>
+        </member>
+        <member name="M:info_app.Models.IUserInterface.GetByUsername(System.String)">
+            <summary>
+            Metoda pobierająca użytkownika na podstawie nazwy użytkownika.
+            </summary>
+            <param name="username">Nazwa użytkownika.</param>
+            <returns>Obiekt użytkownika lub null, jeśli użytkownik nie istnieje.</returns>
+        </member>
+        <member name="T:info_app.Models.User">
+            <summary>
+            Klasa reprezentująca użytkownika aplikacji.
+            </summary>
+        </member>
+        <member name="P:info_app.Models.User.UserId">
+            <summary>
+            Identyfikator użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.Models.User.username">
+            <summary>
+            Nazwa użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.Models.User.password">
+            <summary>
+            Hasło użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.Models.User.email">
+            <summary>
+            Adres e-mail użytkownika.
+            </summary>
+        </member>
+        <member name="T:info_app.Models.UserAccount">
+            <summary>
+            Klasa reprezentująca konto użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.Models.UserAccount.Username">
+            <summary>
+            Nazwa użytkownika.
+            </summary>
+        </member>
+        <member name="T:info_app.NewsAppDBEntities">
+            <summary>
+            Kontekst bazy danych dla aplikacji NewsApp.
+            </summary>
+        </member>
+        <member name="M:info_app.NewsAppDBEntities.#ctor">
+            <summary>
+            Konstruktor domyślny inicjujący nową instancję kontekstu bazy danych.
+            </summary>
+        </member>
+        <member name="M:info_app.NewsAppDBEntities.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Metoda wywoływana przy konfiguracji modelu bazy danych.
+            </summary>
+            <param name="modelBuilder">Builder modelu bazy danych.</param>
+        </member>
+        <member name="P:info_app.NewsAppDBEntities.Article">
+            <summary>
+            Zbiór danych dla artykułów.
+            </summary>
+        </member>
+        <member name="P:info_app.NewsAppDBEntities.FavouriteAricles">
+            <summary>
+            Zbiór danych dla ulubionych artykułów.
+            </summary>
+        </member>
+        <member name="P:info_app.NewsAppDBEntities.User">
+            <summary>
+            Zbiór danych dla użytkowników.
+            </summary>
+        </member>
+        <member name="T:info_app.Repository.UserRepository">
+            <summary>
+            Repozytorium użytkowników, implementujące interfejs IUserInterface.
+            </summary>
+        </member>
+        <member name="M:info_app.Repository.UserRepository.AuthenticateUser(System.Net.NetworkCredential)">
+            <summary>
+            Metoda uwierzytelniająca użytkownika na podstawie danych uwierzytelniających.
+            </summary>
+            <param name="credential">Dane uwierzytelniające.</param>
+            <returns>Identyfikator użytkownika lub -1, jeśli uwierzytelnienie nie powiedzie się.</returns>
+        </member>
+        <member name="M:info_app.Repository.UserRepository.RegisterUser(System.Net.NetworkCredential,System.String)">
+            <summary>
+            Metoda rejestracji użytkownika.
+            </summary>
+            <param name="credential">Dane uwierzytelniające.</param>
+            <param name="email">Adres e-mail użytkownika.</param>
+            <returns>Prawda, jeśli rejestracja zakończyła się sukcesem, w przeciwnym razie fałsz.</returns>
+        </member>
+        <member name="M:info_app.Repository.UserRepository.GetByUsername(System.String)">
+            <summary>
+            Metoda pobierająca użytkownika na podstawie nazwy użytkownika.
+            </summary>
+            <param name="username">Nazwa użytkownika.</param>
+            <returns>Obiekt użytkownika lub null, jeśli użytkownik nie istnieje.</returns>
+        </member>
+        <member name="T:info_app.User">
+            <summary>
+            Reprezentuje użytkownika aplikacji.
+            </summary>
+        </member>
+        <member name="M:info_app.User.#ctor">
+            <summary>
+            Konstruktor domyślny inicjalizujący kolekcję ulubionych artykułów użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.User.UserId">
+            <summary>
+            Identyfikator użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.User.username">
+            <summary>
+            Nazwa użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.User.email">
+            <summary>
+            Adres e-mail użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.User.password">
+            <summary>
+            Hasło użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.User.FavouriteAricles">
+            <summary>
+            Kolekcja ulubionych artykułów użytkownika.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.BaseInnerModel">
+            <summary>
+            Konstruktor Bazowego Modelu.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.BaseViewModel">
+            <summary>
+            Klasa bazowa dla widoków, zapewniająca powiadomienia o zmianie właściwości.
+            </summary>
+        </member>
+        <member name="E:info_app.ViewModel.BaseViewModel.PropertyChanged">
+            <summary>
+            Zdarzenie wywoływane, gdy zmienia się wartość właściwości.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.BaseViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Wywołuje zdarzenie PropertyChanged dla określonej właściwości.
+            </summary>
+            <param name="propertyName">Nazwa zmienionej właściwości.</param>
+        </member>
+        <member name="T:info_app.ViewModel.EntertainmentViewModel">
+            <summary>
+            ViewModel dla widoku rozrywki.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.EntertainmentViewModel.CurrentUserAccount">
+            <summary>
+            Aktualne konto użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.EntertainmentViewModel.Articles">
+            <summary>
+            Lista artykułów.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.EntertainmentViewModel.TopArticles">
+            <summary>
+            Lista najlepszych artykułów.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.EntertainmentViewModel.#ctor">
+            <summary>
+            Konstruktor EntertainmentViewModel.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.EntertainmentViewModel.LoadData">
+            <summary>
+            Metoda wczytująca dane.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.EntertainmentViewModel.WykonajAkcje(System.Int32)">
+            <summary>
+            Metoda wykonująca akcję na artykule.
+            </summary>
+            <param name="index">Indeks artykułu.</param>
+        </member>
+        <member name="M:info_app.ViewModel.EntertainmentViewModel.LoadDataFromApiAsync">
+            <summary>
+            Metoda asynchronicznie wczytująca dane z API.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.FavouritesViewModel">
+            <summary>
+            ViewModel dla widoku ulubionych artykułów.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.FavouritesViewModel.CurrentUserAccount">
+            <summary>
+            Aktualne konto użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.FavouritesViewModel.FavouriteArticles">
+            <summary>
+            Lista ulubionych artykułów.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.FavouritesViewModel.LoadFavouriteArticles">
+            <summary>
+            Metoda wczytująca ulubione artykuły użytkownika.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.FavouritesViewModel.#ctor">
+            <summary>
+            Konstruktor FavouritesViewModel.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.FavouritesViewModel.LoadData">
+            <summary>
+            Metoda wczytująca dane.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.HealthViewModel">
+            <summary>
+            ViewModel dla widoku zdrowia.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.HealthViewModel.CurrentUserAccount">
+            <summary>
+            Aktualne konto użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.HealthViewModel.Articles">
+            <summary>
+            Lista najlepszych artykułów.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.HealthViewModel.TopArticles">
+            <summary>
+            Lista najlepszych artykułów jako kolekcja obserwowalna.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.HealthViewModel.#ctor">
+            <summary>
+            Konstruktor HealthViewModel.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.HealthViewModel.LoadData">
+            <summary>
+            Metoda ładująca dane.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.HealthViewModel.WykonajAkcje(System.Int32)">
+            <summary>
+            Wykonuje akcję dla wybranego artykułu.
+            </summary>
+            <param name="index">Indeks wybranego artykułu.</param>
+        </member>
+        <member name="M:info_app.ViewModel.HealthViewModel.LoadDataFromApiAsync">
+            <summary>
+            Asynchronicznie ładuje dane z API.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.HomeViewModel">
+            <summary>
+            ViewModel dla widoku podstawowego.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.HomeViewModel.#ctor">
+            <summary>
+            Konstruktor ViewModelu Home.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.LoginViewModel">
+            <summary>
+            Klasa ViewModelu logowania.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.LoginViewModel.UserId">
+            <summary>
+            ID użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.LoginViewModel.Username">
+            <summary>
+            Nazwa użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.LoginViewModel.Password">
+            <summary>
+            Hasło użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.LoginViewModel.Isvisible">
+            <summary>
+            Flaga określająca widoczność.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.LoginViewModel.Errormsg">
+            <summary>
+            Komunikat o błędzie.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.LoginViewModel.Login">
+            <summary>
+            Polecenie logowania.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.LoginViewModel.Register">
+            <summary>
+            Polecenie rejestracji.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.LoginViewModel.#ctor">
+            <summary>
+            Konstruktor ViewModelu logowania.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.LoginViewModel.ExecuteRegisterCommand(System.Object)">
+            <summary>
+            Metoda wywoływana po naciśnięciu przycisku rejestracji.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.LoginViewModel.CanExecuteLoginCommand(System.Object)">
+            <summary>
+            Metoda sprawdzająca, czy można wykonać polecenie logowania.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.LoginViewModel.ExecuteLoginCommand(System.Object)">
+            <summary>
+            Metoda wywoływana po naciśnięciu przycisku logowania.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.MainViewModel">
+            <summary>
+            Klasa ViewModelu głównego widoku.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.MainViewModel.UserId">
+            <summary>
+            ID użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.MainViewModel.CurrentChildViewModel">
+            <summary>
+            Aktualny widok podrzędny.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.MainViewModel.ShowHomeViewCommand">
+            <summary>
+            Polecenie do wyświetlenia widoku strony głównej.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.MainViewModel.ShowFavouritesViewCommand">
+            <summary>
+            Polecenie do wyświetlenia widoku ulubionych.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.MainViewModel.ShowEntertainmentViewCommand">
+            <summary>
+            Polecenie do wyświetlenia widoku rozrywki.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.MainViewModel.ShowHealthViewCommand">
+            <summary>
+            Polecenie do wyświetlenia widoku zdrowia.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.MainViewModel.ShowScienceViewCommand">
+            <summary>
+            Polecenie do wyświetlenia widoku nauki.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.MainViewModel.#ctor">
+            <summary>
+            Konstruktor ViewModelu głównego widoku.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.MainViewModel.ExecuteShowScienceViewCommand(System.Object)">
+            <summary>
+            Metoda wykonująca polecenie wyświetlenia widoku nauki.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.MainViewModel.ExecuteShowHealthViewCommand(System.Object)">
+            <summary>
+            Metoda wykonująca polecenie wyświetlenia widoku zdrowia.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.MainViewModel.ExecuteShowFavouritesViewCommand(System.Object)">
+            <summary>
+            Metoda wykonująca polecenie wyświetlenia widoku ulubionych.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.MainViewModel.ExecuteShowHomeViewCommand(System.Object)">
+            <summary>
+            Metoda wykonująca polecenie wyświetlenia widoku strony głównej.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.MainViewModel.ExecuteShowEntertainmentViewCommand(System.Object)">
+            <summary>
+            Metoda wykonująca polecenie wyświetlenia widoku rozrywki.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.RegisterViewModel">
+            <summary>
+            Klasa ViewModelu rejestracji.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.RegisterViewModel.#ctor(info_app.Views.UserRegister)">
+            <summary>
+            Konstruktor ViewModelu rejestracji.
+            </summary>
+            <param name="userRegister">Referencja do widoku rejestracji.</param>
+        </member>
+        <member name="M:info_app.ViewModel.RegisterViewModel.#ctor">
+            <summary>
+            Domyślny konstruktor ViewModelu rejestracji.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.RegisterViewModel.Username">
+            <summary>
+            Nazwa użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.RegisterViewModel.Password">
+            <summary>
+            Hasło użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.RegisterViewModel.Email">
+            <summary>
+            Adres email użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.RegisterViewModel.Isvisible">
+            <summary>
+            Flaga określająca widoczność.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.RegisterViewModel.Errormsg">
+            <summary>
+            Komunikat o błędzie.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.RegisterViewModel.IsValidEmail(System.String)">
+            <summary>
+            Sprawdza poprawność adresu email.
+            </summary>
+            <param name="email">Adres email do sprawdzenia.</param>
+            <returns>Prawda, jeśli adres email jest poprawny; w przeciwnym razie fałsz.</returns>
+        </member>
+        <member name="P:info_app.ViewModel.RegisterViewModel.Register">
+            <summary>
+            Polecenie rejestracji.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.RegisterViewModel.CanExecuteRegisterCommand(System.Object)">
+            <summary>
+            Metoda sprawdzająca, czy można wykonać polecenie rejestracji.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.RegisterViewModel.ExecuteRegisterCommand(System.Object)">
+            <summary>
+            Metoda wywoływana po naciśnięciu przycisku rejestracji.
+            </summary>
+        </member>
+        <member name="T:info_app.ViewModel.RelayCommand">
+            <summary>
+            Implementacja interfejsu ICommand, która reprezentuje polecenie, które można wykonać.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.RelayCommand.#ctor(System.Action{System.Object})">
+            <summary>
+            Konstruktor RelayCommand.
+            </summary>
+            <param name="executeAction">Delegat Action&lt;object&gt; reprezentujący akcję do wykonania, gdy komenda zostanie wykonana.</param>
+        </member>
+        <member name="M:info_app.ViewModel.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
+            <summary>
+            Konstruktor RelayCommand.
+            </summary>
+            <param name="executeAction">Delegat Action&lt;object&gt; reprezentujący akcję do wykonania, gdy komenda zostanie wykonana.</param>
+            <param name="predicate">Delegat Predicate&lt;object&gt; określający, czy komenda może być wykonana w danym momencie.</param>
+        </member>
+        <member name="E:info_app.ViewModel.RelayCommand.CanExecuteChanged">
+            <summary>
+            Zdarzenie CanExecuteChanged, które występuje, gdy zmienia się możliwość wykonania komendy.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Metoda określająca, czy komenda może zostać wykonana.
+            </summary>
+            <param name="parameter">Parametr przekazywany do komendy.</param>
+            <returns>Prawda, jeśli komenda może zostać wykonana; w przeciwnym razie fałsz.</returns>
+        </member>
+        <member name="M:info_app.ViewModel.RelayCommand.Execute(System.Object)">
+            <summary>
+            Metoda wykonująca polecenie.
+            </summary>
+            <param name="parameter">Parametr przekazywany do komendy.</param>
+        </member>
+        <member name="T:info_app.ViewModel.ScienceViewModel">
+            <summary>
+            ViewModel dla widoku naukowego.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.ScienceViewModel.Articles">
+            <summary>
+            Lista artykułów.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.ScienceViewModel.CurrentUserAccount">
+            <summary>
+            Aktualne konto użytkownika.
+            </summary>
+        </member>
+        <member name="P:info_app.ViewModel.ScienceViewModel.TopArticles">
+            <summary>
+            Lista najlepszych artykułów.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.ScienceViewModel.#ctor">
+            <summary>
+            Konstruktor ScienceViewModel.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.ScienceViewModel.LoadData">
+            <summary>
+            Metoda ładująca dane.
+            </summary>
+        </member>
+        <member name="M:info_app.ViewModel.ScienceViewModel.WykonajAkcje(System.Int32)">
+            <summary>
+            Wykonuje akcję dla wybranego artykułu.
+            </summary>
+            <param name="index">Indeks wybranego artykułu.</param>
+        </member>
+        <member name="M:info_app.ViewModel.ScienceViewModel.LoadDataFromApiAsync">
+            <summary>
+            Asynchronicznie ładuje dane z API.
+            </summary>
+        </member>
+        <member name="T:info_app.Views.EntertainmentView">
+            <summary>
+            Logika interakcji dla klasy EntertainmentView.xaml
+            </summary>
+            <summary>
+            EntertainmentView
+            </summary>
+        </member>
+        <member name="M:info_app.Views.EntertainmentView.#ctor">
+            <summary>
+            Konstruktor klasy EntertainmentView.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.EntertainmentView.EntertainmentView_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie Loaded dla widoku EntertainmentView.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.EntertainmentView.AddToFavourites_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje kliknięcie przycisku "AddToFavourites".
+            </summary>
+        </member>
+        <member name="M:info_app.Views.EntertainmentView.Button1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje kliknięcie przycisku Button1.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.EntertainmentView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.Views.FavouritesView">
+            <summary>
+            Logika interakcji dla klasy FavouritesView.xaml
+            </summary>
+            <summary>
+            FavouritesView
+            </summary>
+        </member>
+        <member name="M:info_app.Views.FavouritesView.#ctor">
+            <summary>
+            Konstruktor
+            </summary>
+        </member>
+        <member name="M:info_app.Views.FavouritesView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.Views.HealthView">
+            <summary>
+            Logika interakcji dla klasy HealthView.xaml
+            </summary>
+            <summary>
+            HealthView
+            </summary>
+        </member>
+        <member name="M:info_app.Views.HealthView.#ctor">
+            <summary>
+            Konstruktor klasy HealthView.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.HealthView.HealthView_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie Loaded dla widoku HealthView.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.HealthView.AddToFavourites_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje kliknięcie przycisku "AddToFavourites".
+            </summary>
+        </member>
+        <member name="M:info_app.Views.HealthView.Button1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje kliknięcie przycisku Button1.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.HealthView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.Views.HomeView">
+            <summary>
+            Logika interakcji dla klasy HomeView.xaml
+            </summary>
+            <summary>
+            HomeView
+            </summary>
+        </member>
+        <member name="M:info_app.Views.HomeView.#ctor">
+            <summary>
+            Konstruktor klasy HomeView.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.HomeView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.Views.MainWindow">
+            <summary>
+            Logika interakcji dla klasy MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:info_app.Views.MainWindow.#ctor">
+            <summary>
+            Konstruktor klasy MainWindow.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.MainWindow.ControlBarLeftButton(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda obsługująca przeciąganie okna za pasek tytułowy.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.MainWindow.buttonMinimize_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie kliknięcia przycisku minimalizacji.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.MainWindow.buttonClose_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie kliknięcia przycisku zamknięcia okna.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.MainWindow.RadioButton_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie zaznaczenia przycisku typu RadioButton.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.Views.ScienceView">
+            <summary>
+            Logika interakcji dla klasy ScienceView.xaml
+            </summary>
+            <summary>
+            ScienceView
+            </summary>
+        </member>
+        <member name="M:info_app.Views.ScienceView.#ctor">
+            <summary>
+            Konstruktor klasy ScienceView.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.ScienceView.ScienceView_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metoda wywoływana po załadowaniu widoku.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.ScienceView.AddToFavourites_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługa zdarzenia kliknięcia przycisku "AddToFavourites".
+            </summary>
+        </member>
+        <member name="M:info_app.Views.ScienceView.Button1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługa zdarzenia kliknięcia przycisku.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.ScienceView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.Views.UserLogin">
+            <summary>
+            Logika interakcji dla klasy UserLogin.xaml
+            </summary>
+            <summary>
+            UserLogin
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserLogin.#ctor">
+            <summary>
+            Konstruktor klasy UserLogin.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserLogin.buttonMinimize_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie kliknięcia przycisku minimalizacji.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserLogin.buttonClose_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie kliknięcia przycisku zamknięcia okna.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserLogin.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.Views.UserRegister">
+            <summary>
+            Logika interakcji dla klasy UserRegister.xaml
+            </summary>
+            <summary>
+            UserRegister
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserRegister.#ctor">
+            <summary>
+            Konstruktor klasy UserRegister.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserRegister.buttonMinimize_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie kliknięcia przycisku minimalizacji.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserRegister.buttonClose_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Obsługuje zdarzenie kliknięcia przycisku zamknięcia okna.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserRegister.CloseWindow">
+            <summary>
+            Metoda zamykająca okno.
+            </summary>
+        </member>
+        <member name="M:info_app.Views.UserRegister.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:info_app.API.ArticleResponse">
+            <summary>
+            Reprezentuje odpowiedź na artykuł z API News.
+            </summary>
+        </member>
+        <member name="P:info_app.API.ArticleResponse.Title">
+            <summary>
+            Tytuł artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.API.ArticleResponse.Url">
+            <summary>
+            Adres URL artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.API.ArticleResponse.UrlToImage">
+            <summary>
+            Adres URL obrazka artykułu.
+            </summary>
+        </member>
+        <member name="P:info_app.API.ArticleResponse.Author">
+            <summary>
+            Autor artykułu.
+            </summary>
+        </member>
+        <member name="T:info_app.API.NewsApiResponse">
+            <summary>
+            Reprezentuje odpowiedź z API News.
+            </summary>
+        </member>
+        <member name="P:info_app.API.NewsApiResponse.Status">
+            <summary>
+            Status odpowiedzi.
+            </summary>
+        </member>
+        <member name="P:info_app.API.NewsApiResponse.TotalResults">
+            <summary>
+            Całkowita liczba wyników.
+            </summary>
+        </member>
+        <member name="P:info_app.API.NewsApiResponse.Articles">
+            <summary>
+            Lista artykułów.
+            </summary>
+        </member>
+        <member name="T:info_app.App">
+            <summary>
+            Klasa reprezentująca aplikację.
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:info_app.App.ApplicationStart(System.Object,System.Windows.StartupEventArgs)">
+            <summary>
+            Metoda wywoływana podczas uruchamiania aplikacji.
+            </summary>
+            <param name="sender">Obiekt źródłowy zdarzenia.</param>
+            <param name="e">Argumenty zdarzenia Startup.</param>
+        </member>
+        <member name="M:info_app.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:info_app.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:info_app.Properties.Resources">
+            <summary>
+              Silnie typizowana klasa zasobów do wyszukiwania zlokalizowanych ciągów itd.
+            </summary>
+        </member>
+        <member name="P:info_app.Properties.Resources.ResourceManager">
+            <summary>
+              Zwraca buforowane wystąpienie składnika ResourceManager używane przez tę klasę.
+            </summary>
+        </member>
+        <member name="P:info_app.Properties.Resources.Culture">
+            <summary>
+              Przesłania właściwość CurrentUICulture bieżącego wątku dla wszystkich
+              przypadków przeszukiwania zasobów za pomocą tej silnie typizowanej klasy zasobów.
+            </summary>
+        </member>
+    </members>
+</doc>
