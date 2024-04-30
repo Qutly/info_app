@@ -166,10 +166,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Article.cs">
-      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
+      <DependentUpon>NewsAppDBModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="FavouriteAricles.cs">
-      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
+      <DependentUpon>NewsAppDBModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IUserInterface.cs" />
     <Compile Include="Models\User.cs" />
@@ -189,9 +189,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NewsAppDBModel1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsAppDBModel1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewsAppDBModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsAppDBModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewsAppDBModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsAppDBModel1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>NewsAppDBModel.tt</DependentUpon>
+      <DependentUpon>NewsAppDBModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseInnerModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
@@ -312,6 +327,16 @@
       <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
       <LastGenOutput>NewsAppDBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="NewsAppDBModel1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewsAppDBModel1.edmx</DependentUpon>
+      <LastGenOutput>NewsAppDBModel1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="NewsAppDBModel1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewsAppDBModel1.edmx</DependentUpon>
+      <LastGenOutput>NewsAppDBModel1.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -327,6 +352,13 @@
     </EntityDeploy>
     <None Include="NewsAppDBModel.edmx.diagram">
       <DependentUpon>NewsAppDBModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="NewsAppDBModel1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewsAppDBModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="NewsAppDBModel1.edmx.diagram">
+      <DependentUpon>NewsAppDBModel1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

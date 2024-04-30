@@ -117,7 +117,7 @@ namespace info_app.ViewModel
 
         private bool CanExecuteRegisterCommand(object obj)
         {
-            using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
+            using (NewsAppDBEntities db = new NewsAppDBEntities())
             {
                 bool valid;
                 if (string.IsNullOrEmpty(Username) || Username.Length < 3 || Username == null || Password == null || Password.Length < 3 ||!IsValidEmail(Email))
@@ -136,7 +136,7 @@ namespace info_app.ViewModel
             var isValid = userInterface.RegisterUser(new System.Net.NetworkCredential(Username,Password), Email);
             if (isValid)
             {
-                using(NewsAppDBEntities2 db = new NewsAppDBEntities2())
+                using(NewsAppDBEntities db = new NewsAppDBEntities())
                 {
                     User user = new User()
                     {

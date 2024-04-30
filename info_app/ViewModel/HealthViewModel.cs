@@ -70,7 +70,7 @@ namespace info_app.ViewModel
             Article selectedArticle = TopArticles[index];
             try
             {
-                using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
+                using (NewsAppDBEntities db = new NewsAppDBEntities())
                 {
                     if (db.Article.Any(article => article.topic == selectedArticle.topic))
                     {

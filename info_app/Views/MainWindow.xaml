@@ -103,7 +103,8 @@
                      Foreground="White"
                      FontSize="14"
                      Style="{StaticResource LogOutButtonTheme}"
-                     Margin="0,0,0,20"/>
+                     Margin="0,0,0,20"
+                     Command="{Binding LogOutCommand}"/>
             </StackPanel>
             <StackPanel x:Name="ControlBar" Grid.Row="0" Orientation="Horizontal" FlowDirection="RightToLeft" Background="Transparent" MouseLeftButtonDown="ControlBarLeftButton" Grid.ColumnSpan="2">
                 <Button x:Name="buttonClose" Content="x" Foreground="Black" Background="OrangeRed" Cursor="Hand" FontFamily="Georgia" FontSize="10" Click="buttonClose_Click" Width="15"/>

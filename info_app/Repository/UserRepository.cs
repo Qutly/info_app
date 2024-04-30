@@ -16,7 +16,7 @@ namespace info_app.Repository
         public int AuthenticateUser(NetworkCredential credential)
         {
             int id = -1;
-            using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
+            using (NewsAppDBEntities db = new NewsAppDBEntities())
             {
                 var record = db.User.FirstOrDefault(x => x.username == credential.UserName);
                 if (record != null)
@@ -32,7 +32,7 @@ namespace info_app.Repository
 
         public bool RegisterUser(NetworkCredential credential, string email)
         {
-            using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
+            using (NewsAppDBEntities db = new NewsAppDBEntities())
             {
                 bool valid;
                 bool isEmailUnique = !db.User.Any(u => u.email == email);

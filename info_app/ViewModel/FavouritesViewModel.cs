@@ -39,7 +39,7 @@ namespace info_app.ViewModel
         }
         private void LoadFavouriteArticles()
         {
-            using (NewsAppDBEntities2 db = new NewsAppDBEntities2())
+            using (NewsAppDBEntities db = new NewsAppDBEntities())
             {
                 var user = db.User.FirstOrDefault(u => u.username == CurrentUserAccount.Username);
                 if (user != null)

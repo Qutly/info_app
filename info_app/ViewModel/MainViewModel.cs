@@ -12,6 +12,7 @@ using info_app.API;
 using MySqlX.XDevAPI;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using info_app.Views;
 
 namespace info_app.ViewModel
 {
@@ -47,6 +48,10 @@ namespace info_app.ViewModel
         public ICommand ShowHealthViewCommand { get; }
         public ICommand ShowScienceViewCommand { get; }
 
+        public ICommand LogOutCommand { get; }
+
+        UserLogin _loginView;
+
         public MainViewModel()
         {
             ShowHomeViewCommand = new RelayCommand(ExecuteShowHomeViewCommand);
@@ -54,7 +59,16 @@ namespace info_app.ViewModel
             ShowEntertainmentViewCommand = new RelayCommand(ExecuteShowEntertainmentViewCommand);
             ShowHealthViewCommand = new RelayCommand(ExecuteShowHealthViewCommand);
             ShowScienceViewCommand = new RelayCommand(ExecuteShowScienceViewCommand);
+            LogOutCommand = new RelayCommand(ExecuteLogOutCommand);
             ExecuteShowHomeViewCommand(null);
+        }
+
+        private void ExecuteLogOutCommand(object obj)
+        {
+            _loginView = new UserLogin();
+            LoginViewModel loginViewModel = new LoginViewModel();
+            _loginView.Show();
+
         }
 
         private void ExecuteShowScienceViewCommand(object obj)
